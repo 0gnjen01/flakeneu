@@ -8,6 +8,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./packages.nix
+    ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/foot.nix
     ../hjem/fuzzel.nix
