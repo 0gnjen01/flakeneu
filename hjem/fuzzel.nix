@@ -1,6 +1,7 @@
 {...}: {
   hjem.users.ignis = {
     rum.programs.fuzzel = {
+      enable = true;
       settings = {
         main = {
           font = "0xProto Nerd Font Mono:style=Regular:size=12";

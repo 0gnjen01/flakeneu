@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
     ./packages.nix
     ./packages/services.nix
+    ./packages/programs.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/foot.nix

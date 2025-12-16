@@ -392,7 +392,7 @@
           Mod+Shift+Slash { show-hotkey-overlay; }
 
           // Suggested binds for running programs: terminal, app launcher, screen locker.
-          Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+          Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
           Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
           Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -428,7 +428,7 @@
           // or do a four-finger swipe up on a touchpad.
           Mod+O repeat=false { toggle-overview; }
 
-          Mod+Q repeat=false { close-window; }
+          Mod+Shift+Q repeat=false { close-window; }
 
           Mod+Left  { focus-column-left; }
           Mod+Down  { focus-window-down; }
