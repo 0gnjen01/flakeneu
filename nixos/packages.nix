@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     firefox
-    nerdfonts.fonts._0xproto
+    nerd-fonts._0xproto
   ];
 }
