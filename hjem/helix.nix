@@ -1,14 +1,23 @@
 {pkgs, ...}:{
+  environment.systemPackages = with pkgs; [
+    alejandra
+    nixd
+    nil
+  ];
+   
   hjem.users.ignis = {
     rum.programs.helix = {
       enable = true;
       settings = {
-        line-number = "relative";
+        editor = {
+          line-number = "relative";
+        };
       };
-      languages.language.nix = {
+      languages.language = {
+        name = "nix";
         auto-format = true;
-        formatter.command = "${pkgs.alejandra}/bin/alejandra";
-    
+        formatter.command = "alejandra";
+      };
     };
   };
 }
