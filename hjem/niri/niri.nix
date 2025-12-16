@@ -11,7 +11,14 @@
   };
   environment.systemPackages = with pkgs; [
     xwayland-satellite
+    libxcursor
   ];
+
+  environment.variables = {
+    DISPLAY = ":0";
+    __NV_PRIME_RENDER_OFFLOAD = "1";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
 
   hjem.users.ignis = {
     xdg.config.files."niri/config.kdl".text = ''
@@ -23,7 +30,13 @@
       // Input device configuration.
       // Find the full list of options on the wiki:
       // https://yalter.github.io/niri/Configuration:-Input
-      input {
+      
+	cursor {
+	 xcursor-theme "default"
+	 xcursor-size 24
+	}
+
+        input {
           keyboard {
               xkb {
                   // You can set rules, model, layout, variant and options.
@@ -92,7 +105,7 @@
       // Find more information on the wiki:
       // https://yalter.github.io/niri/Configuration:-Outputs
       // Remember to uncomment the node by removing "/-"!
-      /-output "eDP-1" {
+      /-output "HDMI-A-1" {
           // Uncomment this line to disable this output.
           // off
 
