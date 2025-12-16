@@ -4,6 +4,7 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -41,11 +42,17 @@
   boot = {
     loader.limine = {
       enable = true;
+      style = {
+        wallpapers = [ pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath ];
+      };
     };
   };
 
-  networking.hostName = "nixos";
-
+  networking = {
+    hostName = "nixos";
+    networkmanager.enable = true;
+  };
+  
   users.users = {
     ignis = {
       initialPassword = "sudonix";
@@ -53,9 +60,7 @@
       extraGroups = ["wheel" "networkmanager"];
     };
   };
-
-  networking.networkmanager.enable = true;
-
+ 
   time.timeZone = "Europe/Belgrade";
 
   system.stateVersion = "25.05";

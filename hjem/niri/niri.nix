@@ -20,12 +20,7 @@
   };
 
   hjem.users.ignis = {
-    rum.desktops.niri = {
-      spawn-at-startup = [
-        ["noctalia-shell"]
-      ];  
-    };
-    xdg.config.files."niri/config.kdl".text = ''
+       xdg.config.files."niri/config.kdl".text = ''
       // This config is in the KDL format: https://kdl.dev
       // "/-" comments out the following node.
       // Check the wiki for a full description of the configuration:
