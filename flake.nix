@@ -23,18 +23,13 @@
     nixpkgs,
     ...
   } @ inputs: {
-    packages."x86_64-linux".default = {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      modules = [];
-    };
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
           ./nixos/configuration.nix
+          ./hjem/niri/noctalia.nix
           inputs.hjem.nixosModules.default
         ];
       };
     };
-  };
 }

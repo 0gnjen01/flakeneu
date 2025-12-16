@@ -11,7 +11,6 @@
   };
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    libxcursor
   ];
 
   environment.variables = {
@@ -21,6 +20,11 @@
   };
 
   hjem.users.ignis = {
+    rum.desktops.niri = {
+      spawn-at-startup = [
+        ["noctalia-shell"]
+      ];  
+    };
     xdg.config.files."niri/config.kdl".text = ''
       // This config is in the KDL format: https://kdl.dev
       // "/-" comments out the following node.
@@ -31,10 +35,10 @@
       // Find the full list of options on the wiki:
       // https://yalter.github.io/niri/Configuration:-Input
       
-	cursor {
-	 xcursor-theme "default"
-	 xcursor-size 24
-	}
+	    cursor {
+	     xcursor-theme "default"
+	     xcursor-size 24
+	    }
 
         input {
           keyboard {
@@ -105,7 +109,7 @@
       // Find more information on the wiki:
       // https://yalter.github.io/niri/Configuration:-Outputs
       // Remember to uncomment the node by removing "/-"!
-      /-output "HDMI-A-1" {
+      output "HDMI-A-1" {
           // Uncomment this line to disable this output.
           // off
 
@@ -115,10 +119,10 @@
           // for the resolution.
           // If the mode is omitted altogether or is invalid, niri will pick one automatically.
           // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-          mode "1920x1080@120.030"
+          mode "1920x1080@84.911"
 
           // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-          scale 2
+          //scale 2
 
           // Transform allows to rotate the output counter-clockwise, valid values are:
           // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
