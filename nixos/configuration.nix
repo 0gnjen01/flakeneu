@@ -8,13 +8,14 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./packages.nix
     ./packages/services.nix
     ./packages/programs.nix
+    ./packages/packages.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/foot.nix
     ../hjem/fuzzel.nix
+    ../hjem/helix.nix
     ../hjem/git.nix
   ];
 
