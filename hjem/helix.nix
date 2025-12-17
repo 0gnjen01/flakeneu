@@ -1,10 +1,10 @@
-{pkgs, ...}:{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     alejandra
     nixd
     nil
   ];
-   
+
   hjem.users.ignis = {
     rum.programs.helix = {
       enable = true;
