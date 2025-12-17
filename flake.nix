@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hjem.follows = "hjem";
     };
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,6 +25,7 @@
   outputs = {
     self,
     nixpkgs,
+    nvf,
     ...
   } @ inputs: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -28,6 +33,7 @@
         modules = [
           ./nixos/configuration.nix
           ./hjem/niri/noctalia.nix
+          inputs.nvf.nixosModules.default
           inputs.hjem.nixosModules.default
         ];
       };
