@@ -1,10 +1,6 @@
 {pkgs, ...}: {
-  enviroment.systemPackages = with pkgs; [
-    wl-clipboard-rs
-  ];
-
   hjem.users.ignis = {
-    enviroment.sessionVariables = {
+    environment.sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
@@ -42,8 +38,19 @@
 
         clipboard = {
           enable = true;
-          providers.wl-copy.enable = true;
           registers = "unnamed,unnamedplus";
+          providers.wl-copy = {
+            enable = true;
+            package = pkgs.wl-clipboard-rs;
+          };
+        };
+        extraPlugins = {
+          kanso = {
+            package = pkgs.vimPlugins.kanso-nvim;
+            setup = ''
+              vim.cmd.colorscheme("kanso")
+            '';
+          };
         };
       };
     };
