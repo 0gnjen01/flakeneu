@@ -18,6 +18,7 @@
     ../hjem/foot.nix
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
+    ../hjem/firefox.nix
     ../hjem/git.nix
   ];
 
