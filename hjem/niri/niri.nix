@@ -22,9 +22,9 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
-  systemd.user.services.ignis = {
-    wants = ["mako.service"];
+  systemd.user.services.mako = {
     wantedBy = ["niri.service"];
+    after = ["graphical-session.target"];
   };
 
   hjem.users.ignis = {

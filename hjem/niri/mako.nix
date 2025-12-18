@@ -3,7 +3,7 @@
     mako
   ];
   hjem.users.ignis = {
-    xdg.config.files."mako/mako.ini".text = ''
+    xdg.config.files."mako/config".text = ''
       sort=-time
       layer=overlay
       background-color=#2e3440
