@@ -22,7 +22,7 @@
     };
   };
   hjem.users.ignis = {
-    xdg.config.files."/home/ignis/.mozilla/default/chrome/userChrome.css".text = ''
+    xdg.config.files.".mozilla/j3x7648q.default/chrome/userChrome.css".text = ''
       /*---+---+---+---+---+---+---+
        | C | O | L | O | U | R | S |
        +---+---+---+---+---+---+---*/
@@ -659,7 +659,7 @@
       }
       */
     '';
-    xdg.config.files."/home/ignis/.mozilla/firefox/default/user.js".text = ''
+    xdg.config.files.".mozilla/firefox/j3x7648q.default/user.js".text = ''
       //
       /* You may copy+paste this file and use it as it is.
        *

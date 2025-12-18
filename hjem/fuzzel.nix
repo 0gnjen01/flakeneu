@@ -18,14 +18,13 @@
           radius = 0;
         };
         colors = {
-          background = "1C1917FF";
-          border = "B4BDC3FF";
-          text = "B4BDC3FF";
-          match = "66A5ADFF";
-          placeholder = "B77E64FF";
-          selection = "1C1917FF";
-          selection-text = "B279A7FF";
-          selection-match = "819B69FF";
+          background = "23262dFF";
+          border = "c5c9c7FF";
+          text = "c5c9c7FF";
+          match = "8a9a7bFF";
+          selection = "43464eFF";
+          selection-text = "c5c9c7FF";
+          selection-match = "8ba4b0FF";
         };
       };
     };

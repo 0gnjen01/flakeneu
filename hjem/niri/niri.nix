@@ -62,6 +62,11 @@
           }
       }
 
+      border {
+        active-color "#c5c9c7"
+        urgent-color "#c4746e"
+      }
+
       hotkey-overlay {
            skip-at-startup
       }
@@ -76,13 +81,8 @@
       }
 
       window-rule {
-        match title="Vesktop"
+        match title="vesktop"
         open-maximized true
-      }
-
-      window-rule {
-        match app-id="Foot"
-        open-maximized false
       }
 
       binds {

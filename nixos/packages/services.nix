@@ -6,6 +6,9 @@
       audio.enable = true;
       wireplumber.enable = true;
     };
+    # Thunar
+    gvfs.enable = true;
+    tumbler.enable = true;
   };
 
   services.flatpak.enable = true;

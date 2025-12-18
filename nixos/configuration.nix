@@ -19,6 +19,7 @@
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
     ../hjem/firefox.nix
+    ../hjem/mpv.nix
     ../hjem/git.nix
   ];
 
