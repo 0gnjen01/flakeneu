@@ -60,11 +60,15 @@
               proportion 0.5
               proportion 0.66667
           }
-      }
 
-      border {
-        active-color "#c5c9c7"
-        urgent-color "#c4746e"
+        border {
+          off
+        }
+
+        focus-ring {
+          active-color "#c5c9c7"
+          urgent-color "#c4746e"
+        }
       }
 
       hotkey-overlay {

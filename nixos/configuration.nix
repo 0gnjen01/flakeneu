@@ -20,6 +20,7 @@
     ../hjem/fish.nix
     ../hjem/firefox.nix
     ../hjem/mpv.nix
+    ../hjem/mako.nix
     ../hjem/git.nix
   ];
 
