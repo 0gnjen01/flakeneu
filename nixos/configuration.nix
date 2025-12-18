@@ -41,10 +41,16 @@
   };
 
   boot = {
-    loader.limine = {
-      enable = true;
-      style = {
-        wallpapers = [pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath];
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
+      limine = {
+        enable = true;
+        efiSupport = true;
+        style = {
+          wallpapers = [pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath];
+        };
       };
     };
   };
@@ -63,6 +69,8 @@
   };
 
   time.timeZone = "Europe/Belgrade";
+
+  security.rtkit.enable = true;
 
   system.stateVersion = "25.05";
 }

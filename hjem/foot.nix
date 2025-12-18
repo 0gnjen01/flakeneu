@@ -11,25 +11,34 @@
           hide-when-typing = "yes";
         };
         colors = {
-          background = "1C1917";
-          foreground = "B4BDC3";
-          regular0 = "1C1917";
-          regular1 = "DE6E7C";
-          regular2 = "819B69";
-          regular3 = "B77E64";
-          regular4 = "6099C0";
-          regular5 = "B279A7";
-          regular6 = "66A5AD";
-          regular7 = "B4BDC3";
+          foreground = "c5c9c7";
+          background = "23262d";
 
-          bright0 = "403833";
-          bright1 = "E8838F";
-          bright2 = "8BAE68";
-          bright3 = "D68C67";
-          bright4 = "61ABDA";
-          bright5 = "CF86C1";
-          bright6 = "65B8C1";
-          bright7 = "888F94";
+          regular0 = "23262d";
+          regular1 = "c4746e";
+          regular2 = "8a9a7b";
+          regular3 = "c4b28a";
+          regular4 = "8ba4b0";
+          regular5 = "a292a3";
+          regular6 = "8ea4a2";
+          regular7 = "a4a7a4";
+
+          bright0 = "5c6066";
+          bright1 = "e46876";
+          bright2 = "87a987";
+          bright3 = "e6c384";
+          bright4 = "7fb4ca";
+          bright5 = "938aa9";
+          bright6 = "7aa89f";
+          bright7 = "c5c9c7";
+
+          "16" = "b6927b";
+          "17" = "b98d7b";
+
+          selection-foreground = "c5c9c7";
+          selection-background = "43464e";
+
+          urls = "72a7bc";
         };
       };
     };

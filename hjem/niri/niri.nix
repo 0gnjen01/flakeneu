@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.niri.enable = true;
 
   xdg.portal = {
@@ -17,6 +16,7 @@
   ];
 
   environment.variables = {
+    NIXOS_OZONE_WL = "1";
     DISPLAY = ":0";
     __NV_PRIME_RENDER_OFFLOAD = "1";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
@@ -39,7 +39,7 @@
             repeat-delay 200
             repeat-rate 35
             xkb {
-              layout "us,de,sr"
+              layout "us,de"
               options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             }
           }
@@ -61,7 +61,7 @@
               proportion 0.66667
           }
       }
-      
+
       hotkey-overlay {
            skip-at-startup
       }
@@ -79,7 +79,7 @@
         match title="Vesktop"
         open-maximized true
       }
-      
+
       window-rule {
         match app-id="Foot"
         open-maximized false
@@ -90,8 +90,8 @@
 
           Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
           Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-          Mod+A { spawn "firefox"; }          
-          
+          Mod+A { spawn "firefox"; }
+
           XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
           XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
           XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }

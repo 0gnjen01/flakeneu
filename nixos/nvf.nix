@@ -3,6 +3,7 @@
     environment.sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
+      MANPAGER = "nvim +Man!";
     };
   };
 
@@ -29,7 +30,6 @@
           enable = true;
           extraDiagnostics.enable = true;
           format.enable = true;
-          treesitter.enable = true;
           lsp = {
             enable = true;
             servers = ["nil" "nixd"];
@@ -41,7 +41,7 @@
           registers = "unnamed,unnamedplus";
           providers.wl-copy = {
             enable = true;
-            package = pkgs.wl-clipboard-rs;
+            package = pkgs.wl-clipboard;
           };
         };
         extraPlugins = {
