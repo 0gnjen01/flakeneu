@@ -15,12 +15,12 @@
     ./packages/packages.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
+    ../hjem/niri/mako.nix
     ../hjem/foot.nix
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
     ../hjem/firefox.nix
     ../hjem/mpv.nix
-    ../hjem/mako.nix
     ../hjem/git.nix
   ];
 

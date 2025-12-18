@@ -22,6 +22,11 @@
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
+  systemd.user.services.ignis = {
+    wants = ["mako.service"];
+    wantedBy = ["niri.service"];
+  };
+
   hjem.users.ignis = {
     xdg.config.files."niri/config.kdl".text = ''
         // This config is in the KDL format: https://kdl.dev
