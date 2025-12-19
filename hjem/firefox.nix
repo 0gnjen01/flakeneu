@@ -2,6 +2,13 @@
   programs.firefox = {
     enable = true;
     policies = {
+      SearchEngines = {
+        Default = "searx";
+        Add = {
+          Name = "searx";
+          UrlTemplate = "https://searx.fmhy.net/q=%s";
+        };
+      };
       ExtensionSettings = {
         # uBlock Origin:
         "uBlock0@raymondhill.net" = {
@@ -22,7 +29,7 @@
     };
   };
   hjem.users.ignis = {
-    xdg.config.files.".mozilla/j3x7648q.default/chrome/userChrome.css".text = ''
+    files.".mozilla/firefox/j3x7648q.default/chrome/userChrome.css".text = ''
       /*---+---+---+---+---+---+---+
        | C | O | L | O | U | R | S |
        +---+---+---+---+---+---+---*/
@@ -659,7 +666,7 @@
       }
       */
     '';
-    xdg.config.files.".mozilla/firefox/j3x7648q.default/user.js".text = ''
+    files.".mozilla/firefox/j3x7648q.default/user.js".text = ''
       //
       /* You may copy+paste this file and use it as it is.
        *

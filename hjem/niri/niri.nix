@@ -12,6 +12,7 @@
   environment.systemPackages = with pkgs; [
     bibata-cursors
     xwayland-satellite
+    libxcursor
     playerctl
   ];
 
@@ -20,11 +21,6 @@
     DISPLAY = ":0";
     __NV_PRIME_RENDER_OFFLOAD = "1";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-  };
-
-  systemd.user.services.mako = {
-    wantedBy = ["niri.service"];
-    after = ["graphical-session.target"];
   };
 
   hjem.users.ignis = {
