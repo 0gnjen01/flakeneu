@@ -20,5 +20,8 @@
         thunar-archive-plugin
       ];
     };
+    thunderbird = {
+      enable = true;
+    };
   };
 }

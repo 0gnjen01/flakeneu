@@ -3,11 +3,24 @@
     enable = true;
     policies = {
       SearchEngines = {
-        Default = "searx";
-        Add = {
-          Name = "searx";
-          UrlTemplate = "https://searx.fmhy.net/q=%s";
-        };
+        Default = "DuckDuckGo";
+        Add = [
+          {
+            Name = "Nix Packages";
+            URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
+            Method = "GET";
+            IconURL = "https://search.nixos.org/favicon.png";
+            Alias = "@np";
+          }
+
+          {
+            Name = "Nix Options";
+            URLTemplate = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";
+            IconURL = "https://nixos.org/favicon.ico";
+            Method = "GET";
+            Alias = "@no";
+          }
+        ];
       };
       ExtensionSettings = {
         # uBlock Origin:
