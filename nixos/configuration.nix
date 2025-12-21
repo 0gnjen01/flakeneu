@@ -10,11 +10,13 @@
   imports = [
     ./hardware-configuration.nix
     ./nvf.nix
+    ./nvidia.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
+    ../hjem/niri/quickshell.nix
     ../hjem/mako.nix
     ../hjem/foot.nix
     ../hjem/fuzzel.nix
