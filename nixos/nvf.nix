@@ -41,7 +41,6 @@
           registers = "unnamedplus";
           providers.wl-copy = {
             enable = true;
-            package = pkgs.wl-clipboard;
           };
         };
         extraPlugins = {

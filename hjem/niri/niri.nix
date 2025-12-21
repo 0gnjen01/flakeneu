@@ -17,6 +17,7 @@
     xwayland-satellite
     libxcursor
     wl-clipboard
+    cliphist
     gnome-keyring
     playerctl
     bibata-cursors
@@ -30,11 +31,6 @@
   };
 
   hjem.users.ignis = {
-    rum.desktops.niri = {
-      spawn-at-startup = [
-        ["${lib.getExe pkgs.wbg}" "~/Pictures/Wallpapers/2.png"]
-      ];
-    };
     xdg.config.files."niri/config.kdl".text = ''
         cursor {
           xcursor-theme "Bibata-Modern-Ice"
@@ -85,6 +81,8 @@
       screenshot-path null
 
       prefer-no-csd
+
+      spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/2.png"
 
       window-rule {
         match title="Firefox"
