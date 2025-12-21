@@ -5,6 +5,7 @@
   hjem.users.ignis = {
     xdg.config.files = {
       "quickshell/shell.qml".text = ''
+        // shell.qml
         import Quickshell
 
         Scope {
@@ -12,10 +13,12 @@
         }
       '';
       "quickshell/Bar.qml".text = ''
+        // Bar.qml
         import Quickshell
-        import Quickshell.Wayland
 
         Scope {
+          // no more time object
+
           Variants {
             model: Quickshell.screens
 
@@ -31,16 +34,17 @@
 
               implicitHeight: 30
 
-              color: "#23262d"
-
               ClockWidget {
-                anchor.centerIn: parent
+                anchors.centerIn: parent
+
+                // no more time binding
               }
             }
           }
         }
       '';
       "quickshell/Time.qml".text = ''
+        // Time.qml
         pragma Singleton
 
         import Quickshell
@@ -48,7 +52,10 @@
 
         Singleton {
           id: root
+          // an expression can be broken across multiple lines using {}
           readonly property string time: {
+            // The passed format string matches the default output of
+            // the `date` command.
             Qt.formatDateTime(clock.date, "ddd MMM d hh:mm:ss AP t yyyy")
           }
 
@@ -59,10 +66,14 @@
         }
       '';
       "quickshell/ClockWidget.qml".text = ''
+        // ClockWidget.qml
         import QtQuick
 
         Text {
-          text: Time.clock
+          // we no longer need time as an input
+
+          // directly access the time property from the Time singleton
+          text: Time.time
         }
       '';
     };
