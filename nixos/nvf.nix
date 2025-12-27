@@ -24,10 +24,15 @@
           enable = true;
         };
 
-        utility = {
-          snacks-nvim = {
-            enable = true;
-          };
+        telescope = {
+          enable = true;
+          extensions = [
+            {
+              name = "fzf";
+              packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+              setup = {fzf = {fuzzy = true;};};
+            }
+          ];
         };
 
         notes.neorg = {
@@ -38,6 +43,11 @@
             "core.dirman".config.workspaces.notes = "~/neorg";
           };
           treesitter.enable = true;
+        };
+
+        dashboard.alpha = {
+          enable = true;
+          theme = "theta";
         };
 
         options = {

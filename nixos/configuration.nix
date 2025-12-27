@@ -16,10 +16,8 @@
     ./packages/packages.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
-    ../hjem/niri/noctalia.nix
     ../hjem/mako.nix
     ../hjem/foot.nix
-    ../hjem/wezterm.nix
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
     ../hjem/firefox.nix
