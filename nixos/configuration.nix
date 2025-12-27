@@ -14,7 +14,6 @@
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
-    ./packages/wine.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
