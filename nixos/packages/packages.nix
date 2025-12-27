@@ -9,6 +9,8 @@
     krita
     pavucontrol
     p7zip
+    ripgrep
+    fd
   ];
   fonts.packages = with pkgs; [
     nerd-fonts._0xproto

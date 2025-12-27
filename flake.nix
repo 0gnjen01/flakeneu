@@ -16,10 +16,6 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -28,14 +24,13 @@
     nvf,
     ...
   } @ inputs: {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./nixos/configuration.nix
-          ./hjem/niri/noctalia.nix
-          inputs.nvf.nixosModules.default
-          inputs.hjem.nixosModules.default
-        ];
-      };
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./nixos/configuration.nix
+        inputs.nvf.nixosModules.default
+        inputs.hjem.nixosModules.default
+      ];
     };
+  };
 }
