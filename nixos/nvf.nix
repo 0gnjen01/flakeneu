@@ -12,9 +12,33 @@
 
     settings = {
       vim = {
-        autopairs.nvim-autopairs.enable = true;
+        autopairs.nvim-autopairs = {
+          enable = true;
+        };
 
-        statusline.lualine.enable = true;
+        statusline.lualine = {
+          enable = true;
+        };
+
+        treesitter = {
+          enable = true;
+        };
+
+        utility = {
+          snacks-nvim = {
+            enable = true;
+          };
+        };
+
+        notes.neorg = {
+          enable = true;
+          setupOpts.load = {
+            "core.defaults".enable = true;
+            "core.concealer".enable = true;
+            "core.dirman".config.workspaces.notes = "~/neorg";
+          };
+          treesitter.enable = true;
+        };
 
         options = {
           autoindent = true;
@@ -26,23 +50,26 @@
           formatOnSave = true;
         };
 
-        languages.nix = {
-          enable = true;
-          extraDiagnostics.enable = true;
-          format.enable = true;
-          lsp = {
+        languages = {
+          nix = {
             enable = true;
-            servers = ["nil" "nixd"];
+            extraDiagnostics.enable = true;
+            format.enable = true;
+            treesitter.enable = true;
+            lsp = {
+              enable = true;
+              servers = ["nil" "nixd"];
+            };
           };
         };
 
         clipboard = {
           enable = true;
-          registers = "unnamedplus";
           providers.wl-copy = {
             enable = true;
           };
         };
+
         extraPlugins = {
           kanso = {
             package = pkgs.vimPlugins.kanso-nvim;

@@ -5,75 +5,44 @@
   hjem.users.ignis = {
     xdg.config.files = {
       "quickshell/shell.qml".text = ''
-        // shell.qml
         import Quickshell
+        import Quickshell.Wayland
+        import Quickshell.Io
+        import QtQuick
+        import QtQuick.Layouts
 
-        Scope {
-          Bar {}
-        }
-      '';
-      "quickshell/Bar.qml".text = ''
-        // Bar.qml
-        import Quickshell
+        PanelWindow {
+            id: root
 
-        Scope {
-          // no more time object
+            property color colBg: "#23262d"
+            property color colFg: "#c5c9c7"
+            property string fontFamily: "0xProto Nerd Font Mono"
+            property int fontSize: 14
 
-          Variants {
-            model: Quickshell.screens
+            anchors.top: true
+            anchors.left: true
+            anchors.right: true
+            implicitHeight: 30
+            color: root.colBg
 
-            PanelWindow {
-              required property var modelData
-              screen: modelData
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 8
 
-              anchors {
-                top: true
-                left: true
-                right: true
-              }
-
-              implicitHeight: 30
-
-              ClockWidget {
-                anchors.centerIn: parent
-
-                // no more time binding
-              }
+                Text {
+                    id: clock
+                    anchors.centerIn: parent
+                    text: Qt.formatDateTime(new Date(), "HH:mm")
+                    color: root.colFg
+                    font { family: root.fontFamily; pixelSize: root.fontSize; bold: true }
+                    Timer {
+                        interval: 1000
+                        running: true
+                        repeat: true
+                        onTriggered: clock.text = Qt.formatDateTime(new Date(), "HH:mm")
+                    }
+                }
             }
-          }
-        }
-      '';
-      "quickshell/Time.qml".text = ''
-        // Time.qml
-        pragma Singleton
-
-        import Quickshell
-        import QtQuick
-
-        Singleton {
-          id: root
-          // an expression can be broken across multiple lines using {}
-          readonly property string time: {
-            // The passed format string matches the default output of
-            // the `date` command.
-            Qt.formatDateTime(clock.date, "ddd MMM d hh:mm:ss AP t yyyy")
-          }
-
-          SystemClock {
-            id: clock
-            precision: SystemClock.Seconds
-          }
-        }
-      '';
-      "quickshell/ClockWidget.qml".text = ''
-        // ClockWidget.qml
-        import QtQuick
-
-        Text {
-          // we no longer need time as an input
-
-          // directly access the time property from the Time singleton
-          text: Time.time
         }
       '';
     };
