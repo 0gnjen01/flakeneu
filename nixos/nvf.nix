@@ -9,11 +9,12 @@
 
   programs.nvf = {
     enable = true;
-
     settings = {
       vim = {
-        autopairs.nvim-autopairs = {
-          enable = true;
+        autocomplete = {
+          blink-cmp = {
+            enable = true;
+          };
         };
 
         statusline.lualine = {
@@ -37,11 +38,6 @@
 
         notes.neorg = {
           enable = true;
-          setupOpts.load = {
-            "core.defaults".enable = true;
-            "core.concealer".enable = true;
-            "core.dirman".config.workspaces.notes = "~/neorg";
-          };
           treesitter.enable = true;
         };
 
@@ -58,6 +54,11 @@
         lsp = {
           enable = true;
           formatOnSave = true;
+          inlayHints.enable = true;
+        };
+
+        diagnostics = {
+          enable = true;
         };
 
         languages = {

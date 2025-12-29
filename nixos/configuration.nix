@@ -11,6 +11,7 @@
     ./hardware-configuration.nix
     ./nvf.nix
     ./nvidia.nix
+    ./emacs/emacs.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
