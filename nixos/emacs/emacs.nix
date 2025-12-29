@@ -4,8 +4,12 @@
   ...
 }: {
   nixpkgs.overlays = [inputs.nix-doom-emacs-unstraightened.overlays.default];
-  (pkgs.emacsWithDoom {
-    doomDir = inputs.doom-config;
-    doomDir = ./doom;
-  })
+
+  environment.systemPackages = with pkgs; [
+    (emacsWithDoom {
+      doomDir = ./doom;
+      doomLocalDir = "~/.local/share/doom";
+      emacs = emacs-pgtk;
+    })
+  ];
 }
