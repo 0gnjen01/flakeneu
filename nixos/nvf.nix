@@ -11,8 +11,8 @@
     enable = true;
     settings = {
       vim = {
-        autocomplete = {
-          blink-cmp = {
+        autopairs = {
+          nvim-autopairs = {
             enable = true;
           };
         };
@@ -25,27 +25,6 @@
           enable = true;
         };
 
-        telescope = {
-          enable = true;
-          extensions = [
-            {
-              name = "fzf";
-              packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
-              setup = {fzf = {fuzzy = true;};};
-            }
-          ];
-        };
-
-        notes.neorg = {
-          enable = true;
-          treesitter.enable = true;
-        };
-
-        dashboard.alpha = {
-          enable = true;
-          theme = "theta";
-        };
-
         options = {
           autoindent = true;
           shiftwidth = 2;
@@ -55,10 +34,6 @@
           enable = true;
           formatOnSave = true;
           inlayHints.enable = true;
-        };
-
-        diagnostics = {
-          enable = true;
         };
 
         languages = {

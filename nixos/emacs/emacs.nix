@@ -11,5 +11,10 @@
       doomLocalDir = "~/.local/share/doom";
       emacs = emacs-pgtk;
     })
+    ripgrep
+    alejandra
+  ];
+  fonts.packages = with pkgs; [
+    nerd-fonts._0xproto
   ];
 }

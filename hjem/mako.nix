@@ -2,6 +2,9 @@
   environment.systemPackages = with pkgs; [
     mako
   ];
+  fonts.packages = with pkgs; [
+    nerd-fonts._0xproto
+  ];
   hjem.users.ignis = {
     xdg.config.files."mako/config".text = ''
       sort=-time
@@ -16,7 +19,7 @@
       max-icon-size=64
       default-timeout=5000
       ignore-timeout=1
-      font=0xProto Nerd Font Mono 12
+      font=0xProto Nerd Font Mono 13
 
       [urgency=high]
       border-color=#c4b28a

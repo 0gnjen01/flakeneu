@@ -20,6 +20,14 @@
             Method = "GET";
             Alias = "@no";
           }
+
+          {
+            Name = "Dict cc";
+            URLTemplate = "https://www.dict.cc/?s={searchTerms}";
+            IconURL = "https://dict.cc/favicon.ico";
+            Method = "GET";
+            Alias = "@dd";
+          }
         ];
       };
       ExtensionSettings = {

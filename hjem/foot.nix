@@ -1,4 +1,7 @@
-{...}: {
+{pkgs, ...}: {
+  fonts.packages = with pkgs; [
+    nerd-fonts._0xproto
+  ];
   hjem.users.ignis = {
     rum.programs.foot = {
       enable = true;
