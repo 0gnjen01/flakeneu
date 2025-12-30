@@ -12,7 +12,6 @@
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
-    ./emacs/emacs.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix

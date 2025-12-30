@@ -8,9 +8,10 @@
     btop
     krita
     pavucontrol
-    p7zip
-    ripgrep
+    yazi
+    p7zip-rar
+    wineWowPackages.waylandFull
+    winetricks
     fd
-    clang
   ];
 }

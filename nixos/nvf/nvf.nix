@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     ripgrep
-    skim
   ];
   hjem.users.ignis = {
     environment.sessionVariables = {
@@ -33,6 +32,14 @@
 
         statusline.lualine = {
           enable = true;
+        };
+
+        utility = {
+          snacks-nvim.enable = true;
+          oil-nvim = {
+            enable = true;
+            gitStatus.enable = true;
+          };
         };
 
         treesitter = {
@@ -121,6 +128,38 @@
             package = neorg-interim-ls;
           };
         };
+        keymaps = [
+          {
+            action = "<cmd>lua Snacks.picker.recent()<CR>";
+            key = "<leader>fr";
+            mode = "n";
+            desc = "Recent files";
+          }
+          {
+            action = "<cmd>lua Snacks.picker.files()<CR>";
+            key = "<leader>ff";
+            mode = "n";
+            desc = "Find Files";
+          }
+          {
+            action = "<cmd>lua Snacks.picker.diagnostics()<CR>";
+            key = "<leader>d";
+            mode = "n";
+            desc = "Show diagnostics";
+          }
+          {
+            action = "<cmd>lua Snacks.picker.grep()<CR>";
+            key = "<leader>fs";
+            mode = "n";
+            desc = "Rip-grep";
+          }
+          {
+            action = "<cmd>Neogit<CR>";
+            key = "<leader>gg";
+            mode = "n";
+            desc = "Open Neogit UI";
+          }
+        ];
       };
     };
   };

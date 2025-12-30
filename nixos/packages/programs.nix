@@ -13,13 +13,6 @@
       gamescopeSession.enable = true;
       protontricks.enable = true;
     };
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-volman
-        thunar-archive-plugin
-      ];
-    };
     thunderbird = {
       enable = true;
     };
