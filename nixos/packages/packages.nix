@@ -6,9 +6,10 @@
     prismlauncher
     anki
     btop
+    zathura
     krita
+    swayimg
     pavucontrol
-    yazi
     p7zip-rar
     wineWowPackages.waylandFull
     winetricks

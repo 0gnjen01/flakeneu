@@ -19,6 +19,7 @@
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
     ../hjem/foot.nix
+    ../hjem/kitty.nix
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
     ../hjem/firefox.nix

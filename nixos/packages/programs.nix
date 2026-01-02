@@ -22,5 +22,9 @@
         pkgs.obs-studio-plugins.wlrobs
       ];
     };
+
+    yazi = {
+      enable = true;
+    };
   };
 }

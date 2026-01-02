@@ -20,12 +20,6 @@
           };
         };
 
-        autopairs = {
-          nvim-autopairs = {
-            enable = true;
-          };
-        };
-
         binds = {
           hardtime-nvim.enable = true;
         };
@@ -40,6 +34,7 @@
             enable = true;
             gitStatus.enable = true;
           };
+          images.image-nvim.enable = true;
         };
 
         treesitter = {
@@ -63,6 +58,7 @@
                     study = "~/neorg/study";
                     books = "~/neorg/books";
                     thinking = "~/neorg/thinking";
+                    goals = "~/neorg/goals";
                   };
                 };
                 "core.journal".config.workspace = "journal";
@@ -76,6 +72,7 @@
         options = {
           autoindent = true;
           shiftwidth = 2;
+          conceallevel = 2;
         };
 
         lsp = {
