@@ -13,6 +13,12 @@
         xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome
       ];
+      config = {
+        niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
+        niri.default = "gnome";
+        common.default = "gnome";
+        obs.default = "gnome";
+      };
     };
     mime.defaultApplications = {
       "image/png" = "swayimg.desktop";
