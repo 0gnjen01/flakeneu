@@ -24,6 +24,7 @@
     ../hjem/firefox.nix
     ../hjem/mpv.nix
     ../hjem/git.nix
+    ../hjem/zathura.nix
   ];
 
   nixpkgs = {

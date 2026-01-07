@@ -8,7 +8,6 @@
     dino
     adwaita-icon-theme
     btop
-    zathura
     krita
     swayimg
     pavucontrol

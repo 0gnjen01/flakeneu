@@ -16,7 +16,7 @@
     };
     mime.defaultApplications = {
       "image/png" = "swayimg.desktop";
-      "application/pdf" = "zathura.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
     };
   };
   environment.systemPackages = with pkgs; [
