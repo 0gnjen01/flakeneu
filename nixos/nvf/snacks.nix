@@ -8,6 +8,7 @@
         explorer.enable = true;
         picker.enable = true;
         notifier.enable = true;
+        image.enable = true;
       };
     };
     keymaps = [

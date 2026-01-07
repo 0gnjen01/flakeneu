@@ -3,7 +3,7 @@
     mako
   ];
   fonts.packages = with pkgs; [
-    nerd-fonts._0xproto
+    nerd-fonts.dejavu-sans-mono
   ];
   hjem.users.ignis = {
     xdg.config.files."mako/config".text = ''
@@ -19,7 +19,7 @@
       max-icon-size=64
       default-timeout=5000
       ignore-timeout=1
-      font=0xProto Nerd Font Mono 13
+      font=DejaVu Sans Mono 13
 
       [urgency=high]
       border-color=#c4b28a

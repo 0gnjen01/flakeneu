@@ -5,13 +5,19 @@
 }: {
   programs.niri.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
-    ];
+  xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+      ];
+    };
+    mime.defaultApplications = {
+      "image/png" = "swayimg.desktop";
+      "application/pdf" = "zathura.desktop";
+    };
   };
   environment.systemPackages = with pkgs; [
     xwayland-satellite
@@ -32,24 +38,22 @@
 
   hjem.users.ignis = {
     xdg.config.files."niri/config.kdl".text = ''
-        cursor {
-          xcursor-theme "Bibata-Modern-Ice"
-          xcursor-size 24
-        }
-
-        input {
-          keyboard {
-            repeat-delay 200
-            repeat-rate 35
-            xkb {
-              layout "us,de"
-              options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-            }
-          }
-
-          focus-follows-mouse max-scroll-amount="0%"
+      cursor {
+        xcursor-theme "Bibata-Modern-Ice"
+        xcursor-size 24
       }
 
+      input {
+        keyboard {
+          repeat-delay 200
+          repeat-rate 35
+          xkb {
+            layout "us,de"
+            options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
+          }
+        }
+        focus-follows-mouse max-scroll-amount="0%"
+      }
       output "HDMI-A-1" {
           mode "1920x1080@143.981"
       }
@@ -92,7 +96,7 @@
       binds {
           Mod+Shift+Slash { show-hotkey-overlay; }
 
-          Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
+          Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
           Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
           Mod+A { spawn "firefox"; }
 

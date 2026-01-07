@@ -1,4 +1,7 @@
-{...}: {
+{pkgs, ...}: {
+  environment.systemPackages = with pkgs; [
+    nerd-fonts.dejavu-sans-mono
+  ];
   hjem.users.ignis = {
     rum.programs.kitty = {
       enable = true;
@@ -6,6 +9,10 @@
         fish.enable = true;
       };
       settings = {
+        window_margin_width = 5;
+        font_family = "DejaVu Sans Mono";
+        font_size = 12;
+
         background = "#22262D";
         foreground = "#C5C9Cb";
         selection_background = "#43464E";

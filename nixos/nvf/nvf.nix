@@ -34,7 +34,6 @@
             enable = true;
             gitStatus.enable = true;
           };
-          images.image-nvim.enable = true;
         };
 
         treesitter = {

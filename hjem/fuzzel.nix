@@ -1,13 +1,14 @@
 {pkgs, ...}: {
-  fonts.packages = with pkgs; [
-    nerd-fonts._0xproto
+  environment.systemPackages = with pkgs; [
+    nerd-fonts.dejavu-sans-mono
   ];
+
   hjem.users.ignis = {
     rum.programs.fuzzel = {
       enable = true;
       settings = {
         main = {
-          font = "0xProto Nerd Font Mono:style=Regular:size=13";
+          font = "DejaVu Sans Mono:style=Regular:size=13";
           layer = "overlay";
           terminal = "foot";
           icons-enabled = false;
