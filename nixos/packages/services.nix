@@ -11,12 +11,6 @@
       audio.enable = true;
       wireplumber.enable = true;
     };
-    acpid.enable = true;
-    jellyfin = {
-      enable = true;
-      openFirewall = true;
-      user = "ignis";
-    };
   };
   services.flatpak.enable = true;
   systemd.services.flatpak-repo = {

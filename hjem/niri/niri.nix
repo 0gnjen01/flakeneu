@@ -4,25 +4,17 @@
   ...
 }: {
   programs.niri.enable = true;
-
-  xdg = {
-    portal = {
-      enable = true;
-      xdgOpenUsePortal = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
-      ];
-      config = {
-        niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
-        niri.default = "gnome";
-        common.default = "gnome";
-        obs.default = "gnome";
-      };
-    };
-    mime.defaultApplications = {
-      "image/png" = "swayimg.desktop";
-      "application/pdf" = "org.pwmt.zathura.desktop";
+  xdg.portal = {
+    enable = lib.mkDefault true;
+    xdgOpenUsePortal = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-gtk
+    ];
+    config = {
+      niri.default = lib.mkForce "gnome";
+      common.default = "gnome";
+      obs.default = "gnome";
     };
   };
   environment.systemPackages = with pkgs; [

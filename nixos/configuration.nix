@@ -15,6 +15,7 @@
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
+    ./minecraft.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
@@ -54,11 +55,25 @@
       limine = {
         enable = true;
         efiSupport = true;
+        extraEntries = ''
+          /Windows
+            protocol: efi
+            path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
         style = {
           wallpapers = [pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath];
         };
       };
     };
+  };
+
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
+  hardware = {
+    opentabletdriver.enable = true;
   };
 
   networking = {

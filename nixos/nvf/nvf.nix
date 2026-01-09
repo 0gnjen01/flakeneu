@@ -53,14 +53,9 @@
                   default_workspace = "main";
                   workspaces = {
                     main = "~/neorg/main";
-                    journal = "~/neorg/journal/";
-                    study = "~/neorg/study";
                     books = "~/neorg/books";
-                    thinking = "~/neorg/thinking";
-                    goals = "~/neorg/goals";
                   };
                 };
-                "core.journal".config.workspace = "journal";
                 "core.completion".config.engine.module_name = "external.lsp-completion";
                 "external.interim-ls".config.enable = true;
               };
