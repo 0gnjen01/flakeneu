@@ -15,7 +15,7 @@
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
-    ./minecraft.nix
+    ./selfhost/microbin.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
