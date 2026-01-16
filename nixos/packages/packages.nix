@@ -18,5 +18,6 @@
     fd
     sops
     obsidian
+    nix-index
   ];
 }
