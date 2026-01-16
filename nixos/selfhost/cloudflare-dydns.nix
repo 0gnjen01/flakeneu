@@ -1,0 +1,8 @@
+{config, ...}: {
+  services.cloudflare-dyndns = {
+    enable = true;
+    domains = ["1gnis.me"];
+    apiTokenFile = "${config.sops.secrets.cloudflare_api_key.path}";
+  };
+  sops.secrets.cloudflare_api_key = {};
+}

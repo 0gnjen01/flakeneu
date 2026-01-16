@@ -1,8 +1,9 @@
-{...}: {
+{config, ...}: {
   networking.firewall.allowedTCPPorts = [80 443];
   services = {
     microbin = {
       enable = true;
+      passwordFile = "${config.secrets.microbin_password.path}";
       settings = {
         MICROBIN_BIND = "127.0.0.1";
         MICROBIN_PORT = 8080;
@@ -12,6 +13,7 @@
         MICROBIN_HASH_IDS = true;
         MICROBIN_DISABLE_TELEMETRY = true;
         MICROBIN_QR = true;
+        MICROBIN_NO_LISTING = true;
       };
     };
     nginx = {
@@ -33,4 +35,5 @@
     defaults.email = "ognjenk0l3@gmail.com";
     certs."microbin.1gnis.me" = {};
   };
+  sops.secrets.microbin_password = {};
 }

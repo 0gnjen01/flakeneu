@@ -17,6 +17,7 @@
     ./packages/packages.nix
     ./selfhost/minecraft.nix
     ./selfhost/microbin.nix
+    ./selfhost/cloudflare-dydns.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
