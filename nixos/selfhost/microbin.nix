@@ -1,12 +1,13 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   networking.firewall.allowedTCPPorts = [80 443];
+  sops.secrets.microbin = {
+    sopsFile = ../../secrets/microbin.env;
+    format = "dotenv";
+  };
   services = {
     microbin = {
       enable = true;
+      passwordFile = "${config.sops.secrets.microbin.path}";
       settings = {
         MICROBIN_BIND = "127.0.0.1";
         MICROBIN_PORT = 8080;
