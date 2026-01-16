@@ -58,6 +58,7 @@
                 };
                 "core.completion".config.engine.module_name = "external.lsp-completion";
                 "external.interim-ls".config.enable = true;
+                "core.export".enable = true;
               };
             };
           };
@@ -82,12 +83,6 @@
           };
         };
 
-        git = {
-          neogit = {
-            enable = true;
-          };
-        };
-
         languages = {
           nix = {
             enable = true;
@@ -98,6 +93,13 @@
               enable = true;
               servers = ["nil" "nixd"];
             };
+          };
+          markdown = {
+            enable = true;
+            extensions.markview-nvim.enable = true;
+            format.enable = true;
+            lsp.enable = true;
+            treesitter.enable = true;
           };
         };
 

@@ -20,12 +20,18 @@
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     nvf,
+    sops-nix,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -34,6 +40,7 @@
         ./nixos/configuration.nix
         inputs.nvf.nixosModules.default
         inputs.hjem.nixosModules.default
+        inputs.sops-nix.nixosModules.default
       ];
     };
   };

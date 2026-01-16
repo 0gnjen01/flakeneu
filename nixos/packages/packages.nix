@@ -5,7 +5,7 @@
     microfetch
     prismlauncher
     anki
-    dino
+    gajim
     adwaita-icon-theme
     btop
     krita
@@ -16,5 +16,7 @@
     wineWowPackages.waylandFull
     winetricks
     fd
+    sops
+    obsidian
   ];
 }

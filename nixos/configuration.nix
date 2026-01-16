@@ -15,6 +15,7 @@
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
+    ./selfhost/minecraft.nix
     ./selfhost/microbin.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
@@ -26,6 +27,7 @@
     ../hjem/mpv.nix
     ../hjem/git.nix
     ../hjem/zathura.nix
+    ../secrets/sops.nix
   ];
 
   nixpkgs = {
@@ -33,6 +35,8 @@
       allowUnfree = true;
     };
   };
+
+  documentation.man.generateCaches = false;
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
