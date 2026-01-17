@@ -18,6 +18,7 @@
     ./selfhost/minecraft.nix
     ./selfhost/microbin.nix
     ./selfhost/cloudflare-dydns.nix
+    ./selfhost/adguard-home.nix
     ../hjem/hjem.nix
     ../hjem/niri/niri.nix
     ../hjem/mako.nix
@@ -88,7 +89,6 @@
 
   users.users = {
     ignis = {
-      initialPassword = "sudonix";
       isNormalUser = true;
       extraGroups = ["wheel" "networkmanager"];
     };

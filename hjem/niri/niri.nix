@@ -84,7 +84,7 @@
 
       prefer-no-csd
 
-      spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/2.png"
+      spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallhaven-m9jry8_1920x1080.png"
 
       window-rule {
         match title="Firefox"
