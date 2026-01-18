@@ -20,7 +20,7 @@
     ./selfhost/cloudflare-dydns.nix
     ./selfhost/nextcloud.nix
     ./selfhost/nginx.nix
-    ./selfhost/jellyfin.nix
+    ./selfhost/homepage.nix
     ../hjem/hjem.nix
     ../hjem/niri.nix
     ../hjem/mako.nix

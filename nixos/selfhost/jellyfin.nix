@@ -1,22 +1,20 @@
-{config, ...}: {
+{...}: {
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    user = "1gnis";
-    hardwareAcceleration = {
-      enable = true;
-      type = "nvenc";
-    };
+    user = "ignis";
   };
 
-  services.nginx.virtualHosts.${config.services.jellyfin.user} = {
+  services.nginx.virtualHosts."jellyfin.1gnis.me" = {
     forceSSL = true;
     enableACME = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:8096";
+      proxyWebsockets = true;
+    };
   };
 
   security.acme = {
-    certs = {
-      ${config.services.jellyfin.user}.email = "ognjenk0l3@gmail.com";
-    };
+    certs."jellyfin.1gnis.me" = {};
   };
 }
