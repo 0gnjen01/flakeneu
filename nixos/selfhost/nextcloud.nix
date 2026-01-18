@@ -23,7 +23,6 @@
   };
 
   security.acme = {
-    acceptTerms = true;
     certs = {
       ${config.services.nextcloud.hostName}.email = "ognjenk0l3@gmail.com";
     };

@@ -38,6 +38,7 @@
 
         treesitter = {
           enable = true;
+          fold = true;
         };
 
         notes = {
@@ -53,7 +54,6 @@
                   default_workspace = "main";
                   workspaces = {
                     main = "~/neorg/main";
-                    books = "~/neorg/books";
                   };
                 };
                 "core.completion".config.engine.module_name = "external.lsp-completion";
@@ -99,7 +99,6 @@
             extraDiagnostics.enable = true;
             format.enable = true;
             lsp.enable = true;
-            treesitter.enable = true;
           };
         };
 
@@ -145,12 +144,6 @@
             key = "<leader>fs";
             mode = "n";
             desc = "Rip-grep";
-          }
-          {
-            action = "<cmd>Neogit<CR>";
-            key = "<leader>gg";
-            mode = "n";
-            desc = "Open Neogit UI";
           }
         ];
       };

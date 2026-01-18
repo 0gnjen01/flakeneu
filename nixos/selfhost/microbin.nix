@@ -1,5 +1,4 @@
 {config, ...}: {
-  networking.firewall.allowedTCPPorts = [80 443];
   sops.secrets.microbin = {
     sopsFile = ../../secrets/microbin.env;
     format = "dotenv";
@@ -22,9 +21,6 @@
       };
     };
     nginx = {
-      enable = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
       virtualHosts."microbin.1gnis.me" = {
         enableACME = true;
         forceSSL = true;
@@ -36,8 +32,6 @@
     };
   };
   security.acme = {
-    acceptTerms = true;
-    defaults.email = "ognjenk0l3@gmail.com";
     certs."microbin.1gnis.me" = {};
   };
 }
