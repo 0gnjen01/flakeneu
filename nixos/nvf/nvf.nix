@@ -94,9 +94,9 @@
               servers = ["nil" "nixd"];
             };
           };
-          markdown = {
+          html = {
             enable = true;
-            extensions.markview-nvim.enable = true;
+            extraDiagnostics.enable = true;
             format.enable = true;
             lsp.enable = true;
             treesitter.enable = true;
