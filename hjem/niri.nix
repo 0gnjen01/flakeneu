@@ -3,10 +3,6 @@
   lib,
   ...
 }: {
-  environment.variables = {
-    XCURSOR_THEME = "Bibata-Modern-Ice";
-    XCURSOR_SIZE = "24";
-  };
   programs.niri.enable = true;
   xdg.portal = {
     enable = lib.mkDefault true;
@@ -28,6 +24,7 @@
     cliphist
     gnome-keyring
     playerctl
+    bibata-cursors
   ];
 
   environment.variables = {
@@ -38,12 +35,12 @@
   };
 
   hjem.users.ignis = {
+    xdg.data.files."icons/Banana".source = "${pkgs.banana-cursor}/share/icons/Banana";
+    files.".Xresources".text = ''
+      Xcursor.theme: Banana
+      Xcursor.size: 48
+    '';
     xdg.config.files."niri/config.kdl".text = ''
-      cursor {
-        xcursor-theme "default"
-        xcursor-size 24
-      }
-
       input {
         keyboard {
           repeat-delay 200

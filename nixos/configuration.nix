@@ -12,7 +12,6 @@
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
-    ./stylix.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
@@ -31,6 +30,7 @@
     ../hjem/mpv.nix
     ../hjem/git.nix
     ../hjem/zathura.nix
+    ../hjem/river.nix
     ../secrets/sops.nix
   ];
 
