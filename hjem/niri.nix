@@ -3,6 +3,10 @@
   lib,
   ...
 }: {
+  environment.variables = {
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
+  };
   programs.niri.enable = true;
   xdg.portal = {
     enable = lib.mkDefault true;

@@ -27,10 +27,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
@@ -38,7 +34,6 @@
     nixpkgs,
     nvf,
     sops-nix,
-    stylix,
     ...
   } @ inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -48,7 +43,6 @@
         inputs.nvf.nixosModules.default
         inputs.hjem.nixosModules.default
         inputs.sops-nix.nixosModules.default
-        inputs.stylix.nixosModules.stylix
       ];
     };
   };
