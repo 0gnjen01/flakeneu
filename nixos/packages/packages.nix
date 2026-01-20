@@ -16,6 +16,7 @@
     wineWowPackages.waylandFull
     winetricks
     fd
+    eza
     sops
     obsidian
     nix-index

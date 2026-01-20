@@ -12,6 +12,7 @@
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
+    ./stylix.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix

@@ -24,7 +24,6 @@
     cliphist
     gnome-keyring
     playerctl
-    bibata-cursors
   ];
 
   environment.variables = {
@@ -35,13 +34,9 @@
   };
 
   hjem.users.ignis = {
-    files.".Xresources".text = ''
-      Xcursor.theme: Bibata-Modern-Ice
-      Xcursor.size: 24
-    '';
     xdg.config.files."niri/config.kdl".text = ''
       cursor {
-        xcursor-theme "Bibata-Modern-Ice"
+        xcursor-theme "default"
         xcursor-size 24
       }
 
