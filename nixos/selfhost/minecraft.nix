@@ -7,22 +7,67 @@
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
   services.minecraft-servers = {
-    enable = false;
+    enable = true;
     eula = true;
     openFirewall = true;
-    servers.paperServers = {
-      enable = true;
-      package = pkgs.paperServers.paper-1_12_2;
-      jvmOpts = ''-Xms6G -Xmx6G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true'';
-      operators = {
-        ognjen = "14366532-0366-48a7-a092-b66023910f2b";
-      };
-      serverProperties = {
-        server-port = 25565;
-        difficulty = 3;
-        gamemode = 0;
-        max-players = 5;
-        motd = "1gnis's §lMC §r server hosted on §bNix§fOS!";
+    servers = {
+      create-mod = {
+        enable = true;
+        package = pkgs.fabricServers.fabric-1_20_1;
+        jvmOpts = ''-Xms4G -Xmx4G -XX:+UseZGC -XX:+ZGenerational'';
+        operators = {
+          ognjen = "14366532-0366-48a7-a092-b66023910f2b";
+        };
+        serverProperties = {
+          server-port = 25565;
+          difficulty = 3;
+          gamemode = 0;
+          max-players = 5;
+          level-seed = -1331168131621704834;
+          max-world-size = 5000;
+          motd = "1gnis's §lMC §r server hosted on §bNix§fOS!";
+        };
+        symlinks = {
+          mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
+            Create-Fabric = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/Xbc0uyRg/versions/HAqwA6X1/create-fabric-6.0.8.1%2Bbuild.1744-mc1.20.1.jar";
+              sha512 = "sha512-btrduTvIe/ggQ3bTzt3T49/sHXFlVqWSWALyreWc5aZg3tUAiPqUGIhC/4P8KURTY9+l1CPkJbFXQJKDO2+olg";
+            };
+            Distant-Horizons = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/uCdwusMi/versions/lC6CwqPp/DistantHorizons-2.4.5-b-1.20.1-fabric-forge.jar";
+
+              sha512 = "sha512-Z5y2+bVdfupDwX8CBAQhQFkN5xKwzs3BQBboBkqYRmleL0OJIjd/ZY4mU0xJy2Hm2pOaa+U8LLHNG8CItp2z7g";
+            };
+            Chunky = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/fALzjamp/versions/NHWYq9at/Chunky-1.3.146.jar";
+              sha512 = "sha512-nbuCmTMCqN++bOH0agUdcrWtqSRCT04jZ0zmYNIJJXWEFZozJI+pJHeT6boD06EXKZzh/2aF8Gp/uHyWUERZqg";
+            };
+            Fabric-API = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/L6LGItxd/fabric-api-0.92.7%2B1.20.1.jar";
+              sha512 = "sha512-y6Hqy+HySTBwJaeA7Tt2mBuE+wXgICOUJCXZpyBRLAmRN5GaLKMX/fuNaIUM2U2Bzu+sehWmoaHvysz9Fv6qrQ";
+            };
+            Noisium = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/KuNKN7d2/versions/erSJnRcq/noisium-fabric-2.3.0%2Bmc1.20-1.20.1.jar";
+              sha512 = "sha512-8KvNrFFL0rTravNSnuuZgKb+9TTTEkSHmsspGplDFRrrNPNyv5iuAfYZGHC/leHAvDbVIkMzU6EJC5bnrAPEFw";
+            };
+            Lithium = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/iEcXOkz4/lithium-fabric-mc1.20.1-0.11.4.jar";
+              sha512 = "sha512-MZOLfoSWCYkv+hcQ5B8uFj0Rh2+CRFJUBljEtTzRPGZtva2NIAmJRhkyvZlSgUxZQ+ZCUlMMcr3V2GQXdRUVAA";
+            };
+            ModernFix = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/nmDcB62a/versions/rPmgLeZC/modernfix-fabric-5.25.2%2Bmc1.20.1.jar";
+              sha512 = "sha512-h4450YJ2f/0IrWo1OfrngHORKdsTOr4Cubc9w99uGsndvlCWIDVrCq5ee/vtU10OGHQXAzNDF6Fv7++CAmnaLQ";
+            };
+            FerriteCore = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/uXXizFIs/versions/unerR5MN/ferritecore-6.0.1-fabric.jar";
+              sha512 = "sha512-m33Ghr+nk3gV2Ix7vGkIhXzWZGsF56lt29ytoyijhb1LoFZTLNHX350tf0Jl/Ui9Sf9oPyF/bU6BcXe4f2vEVw";
+            };
+            Memory-Leak-Fix = pkgs.fetchurl {
+              url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/memoryleakfix-fabric-1.17%2B-1.1.5.jar";
+              sha512 = "sha512-p790KTQNB29LMGArxxQoDD9cuOgU526JKWyBVeM1WzMwShSOkhg3ijODEn6Vt7pHQCUGxofx1YYJcE/ozGCrkw";
+            };
+          });
+        };
       };
     };
   };

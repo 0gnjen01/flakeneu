@@ -35,6 +35,10 @@
   };
 
   hjem.users.ignis = {
+    files.".Xresources".text = ''
+      Xcursor.theme: Bibata-Modern-Ice
+      Xcursor.size: 24
+    '';
     xdg.config.files."niri/config.kdl".text = ''
       cursor {
         xcursor-theme "Bibata-Modern-Ice"

@@ -20,7 +20,9 @@
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
