@@ -12,14 +12,11 @@
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
+    ./virtualisation.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
-    ./selfhost/minecraft.nix
-    ./selfhost/microbin.nix
     ./selfhost/cloudflare-dydns.nix
-    ./selfhost/nextcloud.nix
-    ./selfhost/nginx.nix
     ../hjem/hjem.nix
     ../hjem/niri.nix
     ../hjem/mako.nix
@@ -91,6 +88,7 @@
 
   users.users = {
     ignis = {
+      hashedPasswordFile = config.sops.secrets.user-password.path;
       isNormalUser = true;
       extraGroups = ["wheel" "networkmanager"];
     };
@@ -101,4 +99,6 @@
   security.rtkit.enable = true;
 
   system.stateVersion = "25.05";
+
+  sops.secrets.user-password = {};
 }

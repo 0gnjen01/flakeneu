@@ -24,7 +24,6 @@
     cliphist
     gnome-keyring
     playerctl
-    bibata-cursors
   ];
 
   environment.variables = {
@@ -35,11 +34,6 @@
   };
 
   hjem.users.ignis = {
-    xdg.data.files."icons/Banana".source = "${pkgs.banana-cursor}/share/icons/Banana";
-    files.".Xresources".text = ''
-      Xcursor.theme: Banana
-      Xcursor.size: 48
-    '';
     xdg.config.files."niri/config.kdl".text = ''
       input {
         keyboard {
