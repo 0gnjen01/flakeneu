@@ -9,10 +9,10 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./zfs.nix
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
-    ./virtualisation.nix
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
@@ -37,8 +37,6 @@
     };
   };
 
-  documentation.man.generateCaches = false;
-
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
   in {
@@ -57,40 +55,30 @@
       efi = {
         canTouchEfiVariables = true;
       };
-      limine = {
+      systemd-boot = {
         enable = true;
-        efiSupport = true;
-        extraEntries = ''
-          /Windows
-            protocol: efi
-            path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
-        '';
-        style = {
-          wallpapers = [pkgs.nixos-artwork.wallpapers.nineish-dark-gray.gnomeFilePath];
+        windows = {
+          "11-pro" = {
+            title = "Windows 11 Pro";
+            efiDeviceHandle = "HD0b";
+          };
         };
       };
     };
   };
 
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-  };
-
-  hardware = {
-    opentabletdriver.enable = true;
-  };
-
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    hostId = "${pkgs.coreutils}/bin/hostid";
   };
 
-  users.users = {
-    ignis = {
-      hashedPasswordFile = config.sops.secrets.user-password.path;
-      isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager"];
+  users = {
+    users = {
+      ignis = {
+        hashedPasswordFile = config.sops.secrets.user-password.path;
+        isNormalUser = true;
+        extraGroups = ["wheel" "networkmanager"];
+      };
     };
   };
 
@@ -98,7 +86,9 @@
 
   security.rtkit.enable = true;
 
-  system.stateVersion = "25.05";
-
   sops.secrets.user-password = {};
+
+  documentation.man.generateCaches = false;
+
+  system.stateVersion = "25.05";
 }
