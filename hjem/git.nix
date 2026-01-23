@@ -9,7 +9,7 @@
         };
         init.defaultBranch = "master";
         gpg.format = "ssh";
-        user.signingkey = "";
+        user.signingkey = "~/.ssh/id_ed25519.pub";
       };
     };
   };
