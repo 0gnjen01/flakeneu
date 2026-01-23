@@ -6,6 +6,9 @@
   hjem.users.ignis = {
     rum.programs.fish = {
       enable = true;
+      plugins = {
+        inherit (pkgs.fishPlugins) z;
+      };
       config = ''
         set -g fish_greeting ""
       '';

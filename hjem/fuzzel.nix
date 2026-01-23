@@ -8,7 +8,7 @@
       enable = true;
       settings = {
         main = {
-          font = "DejaVu Sans Mono:style=Regular:size=13";
+          font = "DejaVu Sans Mono:style=Book:size=13";
           layer = "overlay";
           terminal = "foot";
           icons-enabled = false;

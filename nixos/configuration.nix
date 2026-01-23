@@ -18,17 +18,18 @@
     ./packages/programs.nix
     ./packages/packages.nix
     ./selfhost/cloudflare-dydns.nix
+    ./selfhost/microbin.nix
+    ./selfhost/minecraft.nix
+    ./selfhost/docker.nix
     ../hjem/hjem.nix
     ../hjem/niri.nix
     ../hjem/mako.nix
-    ../hjem/kitty.nix
+    ../hjem/foot.nix
     ../hjem/fuzzel.nix
     ../hjem/fish.nix
     ../hjem/firefox.nix
     ../hjem/mpv.nix
     ../hjem/git.nix
-    ../hjem/zathura.nix
-    ../hjem/river.nix
     ../secrets/sops.nix
   ];
 

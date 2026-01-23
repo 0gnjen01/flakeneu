@@ -94,11 +94,12 @@
               servers = ["nil" "nixd"];
             };
           };
-          html = {
+          clang = {
             enable = true;
-            extraDiagnostics.enable = true;
-            format.enable = true;
+            dap.enable = true;
+            cHeader = true;
             lsp.enable = true;
+            treesitter.enable = true;
           };
         };
 

@@ -4,18 +4,26 @@
   ...
 }: {
   programs.niri.enable = true;
-  xdg.portal = {
-    enable = lib.mkDefault true;
-    xdgOpenUsePortal = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config = {
-      niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
-      niri.default = lib.mkForce "gnome";
-      common.default = "gnome";
-      obs.default = "gnome";
+  xdg = {
+    portal = {
+      enable = lib.mkDefault true;
+      xdgOpenUsePortal = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gnome
+        pkgs.xdg-desktop-portal-gtk
+      ];
+      config = {
+        niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
+        niri.default = lib.mkForce "gnome";
+        common.default = "gnome";
+        obs.default = "gnome";
+      };
+    };
+    mime.defaultApplications = {
+      "application/pdf" = "firefox.desktop";
+      "image/*" = [
+        "swayimg.desktop"
+      ];
     };
   };
   environment.systemPackages = with pkgs; [
@@ -25,7 +33,6 @@
     cliphist
     gnome-keyring
     playerctl
-    bibata-cursors
   ];
 
   environment.variables = {
@@ -107,12 +114,18 @@
         open-maximized true
       }
 
+      window-rule {
+        match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+        default-floating-position x=10 y=10 relative-to="bottom-right"
+      }
+
       binds {
           Mod+Shift+Slash { show-hotkey-overlay; }
 
-          Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+          Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
           Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
           Mod+A { spawn "firefox"; }
+          Mod+E { spawn "thunar"; }
 
           XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
           XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }

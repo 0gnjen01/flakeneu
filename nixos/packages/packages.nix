@@ -18,5 +18,6 @@
     fd
     eza
     obsidian
+    gcc
   ];
 }

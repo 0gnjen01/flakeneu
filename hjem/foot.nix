@@ -1,13 +1,13 @@
 {pkgs, ...}: {
   fonts.packages = with pkgs; [
-    nerd-fonts._0xproto
+    nerd-fonts.dejavu-sans-mono
   ];
   hjem.users.ignis = {
     rum.programs.foot = {
       enable = true;
       settings = {
         main = {
-          font = "0xProto Nerd Font Mono:style=Regular:size=13";
+          font = "Dejavu Sans Mono:style=Book:size=12";
           pad = "15x15";
         };
         mouse = {
