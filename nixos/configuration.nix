@@ -18,6 +18,7 @@
     ./packages/programs.nix
     ./packages/packages.nix
     ./selfhost/cloudflare-dydns.nix
+    ./selfhost/nginx.nix
     ./selfhost/microbin.nix
     ./selfhost/minecraft.nix
     ./selfhost/docker.nix
