@@ -12,6 +12,7 @@
       pkgs.xdg-desktop-portal-gtk
     ];
     config = {
+      niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
       niri.default = lib.mkForce "gnome";
       common.default = "gnome";
       obs.default = "gnome";
@@ -24,6 +25,7 @@
     cliphist
     gnome-keyring
     playerctl
+    bibata-cursors
   ];
 
   environment.variables = {
@@ -34,7 +36,27 @@
   };
 
   hjem.users.ignis = {
+    files = {
+      ".icons/default/index.theme".text = ''
+        [Icon Theme]
+        Name=default
+        Comment=Default Cursor Theme
+        Inherits=Bibata-Modern-Ice
+      '';
+      ".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
+      ".Xresources".text = ''
+        Xcursor.theme: Bibata-Modern-Ice
+        Xcursor.size: 24
+      '';
+    };
     xdg.config.files."niri/config.kdl".text = ''
+      cursor {
+        xcursor-theme "default"
+        xcursor-size 24
+
+        hide-when-typing
+      }
+
       input {
         keyboard {
           repeat-delay 200
@@ -78,7 +100,7 @@
 
       prefer-no-csd
 
-      spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallhaven-m9jry8_1920x1080.png"
+      spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallhaven-5d3867_1920x1080.png"
 
       window-rule {
         match title="Firefox"

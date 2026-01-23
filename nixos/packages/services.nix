@@ -19,14 +19,17 @@
       audio.enable = true;
       wireplumber.enable = true;
     };
+    openssh = {
+      enable = true;
+    };
   };
   services.flatpak.enable = true;
-  systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.flatpak];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-      flatpak install flathub org.vinegarhq.Sober
-    '';
+  system.userActivationScripts = {
+    flatpak = {
+      text = ''
+        ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        ${pkgs.flatpak}/bin/flatpak install flathub org.vinegarhq.Sober
+      '';
+    };
   };
 }

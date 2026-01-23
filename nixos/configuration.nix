@@ -10,6 +10,7 @@
   imports = [
     ./hardware-configuration.nix
     ./zfs.nix
+    ./thunar.nix
     ./nvf/nvf.nix
     ./nvf/snacks.nix
     ./nvidia.nix
@@ -69,7 +70,7 @@
 
   networking = {
     hostName = "nixos";
-    hostId = "${pkgs.coreutils}/bin/hostid";
+    hostId = "7b8c3093";
   };
 
   users = {
