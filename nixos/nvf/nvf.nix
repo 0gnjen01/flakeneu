@@ -41,6 +41,12 @@
           fold = true;
         };
 
+        git = {
+          neogit = {
+            enable = true;
+          };
+        };
+
         notes = {
           neorg = {
             enable = true;
@@ -122,6 +128,12 @@
           };
         };
         keymaps = [
+          {
+            action = "<<cmd>Neogit<cr>";
+            key = "<leader>gg";
+            mode = "n";
+            desc = "Open Neogit UI";
+          }
           {
             action = "<cmd>lua Snacks.picker.recent()<CR>";
             key = "<leader>fr";
