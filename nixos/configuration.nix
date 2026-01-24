@@ -20,7 +20,7 @@
     ./selfhost/cloudflare-dydns.nix
     ./selfhost/nginx.nix
     ./selfhost/microbin.nix
-    ./selfhost/minecraft.nix
+    ./selfhost/minecraft-docker.nix
     ./selfhost/docker.nix
     ../hjem/hjem.nix
     ../hjem/niri.nix
