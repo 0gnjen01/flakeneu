@@ -22,7 +22,7 @@ in {
   boot = {
     kernelPackages = latestKernelPackage;
     supportedFilesystems = ["zfs"];
-    zfs.forceImportRoot = false;
+    zfs.forceImportRoot = true;
   };
 
   services.zfs = {
