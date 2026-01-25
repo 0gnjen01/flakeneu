@@ -38,15 +38,25 @@
     sops-nix,
     ...
   } @ inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/desktop/configuration.nix
-        ./hosts/laptop/configuration.nix
-        inputs.nvf.nixosModules.default
-        inputs.hjem.nixosModules.default
-        inputs.sops-nix.nixosModules.default
-      ];
+    nixosConfigurations = {
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/desktop/configuration.nix
+          inputs.nvf.nixosModules.default
+          inputs.hjem.nixosModules.default
+          inputs.sops-nix.nixosModules.default
+        ];
+      };
+      laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/laptop/configuration.nix
+          inputs.nvf.nixosModules.default
+          inputs.hjem.nixosModules.default
+          inputs.sops-nix.nixosModules.default
+        ];
+      };
     };
   };
 }

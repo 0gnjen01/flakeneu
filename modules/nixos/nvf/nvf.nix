@@ -8,21 +8,16 @@
     enable = lib.mkEnableOption "enables nvf";
   };
 
-  config = lib.mkIf config.nvf {
+  config = lib.mkIf config.nvf.enable {
     environment.systemPackages = with pkgs; [
       ripgrep
     ];
-    hjem.users.ignis = {
-      environment.sessionVariables = {
-        EDITOR = "nvim";
-        VISUAL = "nvim";
-        MANPAGER = "nvim +Man!";
-      };
-    };
 
-    imports = [
-      ./snacks.nix
-    ];
+    environment.variables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      MANPAGER = "nvim +Man!";
+    };
 
     programs.nvf = {
       enable = true;
@@ -43,7 +38,18 @@
           };
 
           utility = {
-            snacks-nvim.enable = true;
+            snacks-nvim = {
+              enable = true;
+              setupOpts = {
+                bigfile.enable = true;
+                indent.enable = true;
+                quickfile.enable = true;
+                explorer.enable = true;
+                picker.enable = true;
+                notifier.enable = true;
+                image.enable = true;
+              };
+            };
             oil-nvim = {
               enable = true;
               gitStatus.enable = true;
@@ -143,7 +149,7 @@
           };
           keymaps = [
             {
-              action = "<<cmd>Neogit<cr>";
+              action = "<cmd>Neogit<cr>";
               key = "<leader>gg";
               mode = "n";
               desc = "Open Neogit UI";

@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  option.nextcloud = {
+  options.nextcloud = {
     enable = lib.mkEnableOption "enables nextcloud";
   };
   config = lib.mkIf config.nextcloud.enable {

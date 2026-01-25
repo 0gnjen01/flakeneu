@@ -7,7 +7,7 @@
   options.foot = {
     enable = lib.mkEnableOption "enables foot";
   };
-  config = lib.mkIf config.foot {
+  config = lib.mkIf config.foot.enable {
     fonts.packages = with pkgs; [
       nerd-fonts.dejavu-sans-mono
     ];

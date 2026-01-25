@@ -7,7 +7,7 @@
   options.fuzzel = {
     enable = lib.mkEnableOption "enables fuzzel";
   };
-  config = lib.mkIf config.fuzzel {
+  config = lib.mkIf config.fuzzel.enable {
     environment.systemPackages = with pkgs; [
       nerd-fonts.dejavu-sans-mono
     ];
