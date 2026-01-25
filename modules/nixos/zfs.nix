@@ -22,7 +22,7 @@ in {
   options.zfs.enable = {
     enable = lib.mkEnableOption "enables zfs";
   };
-  config = lib.mkIf config.zfs {
+  config = lib.mkIf config.zfs.enable {
     boot = {
       kernelPackages = latestKernelPackage;
       supportedFilesystems = ["zfs"];

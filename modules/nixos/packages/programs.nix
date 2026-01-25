@@ -7,7 +7,7 @@
   options.programs = {
     enable = lib.mkEnableOption "enables programs";
   };
-  config = lib.mkIf config.programs {
+  config = lib.mkIf config.programs.enable {
     programs = {
       nh = {
         enable = true;
