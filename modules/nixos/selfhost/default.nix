@@ -1,15 +1,14 @@
 {lib, ...}: {
   imports = [
-    ./adguard-home.nix
-    ./cloudflare-dydns.nix
-    ./docker.nix
-    ./homepage.nix
-    ./jellyfin.nix
-    ./jellyfin.nix
+    ./cloudflare-dyndns.nix
     ./microbin.nix
-    ./minecraft-docker.nix
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
   ];
+  cloudflare-dyndns.enable = lib.mkDefault false;
+  microbin.enable = lib.mkDefault false;
+  minecraft.enable = lib.mkDefault false;
+  nextcloud.enable = lib.mkDefault false;
+  nginx.enable = lib.mkDefault false;
 }

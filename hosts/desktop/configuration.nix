@@ -9,29 +9,12 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./zfs.nix
-    ./thunar.nix
-    ./nvf/nvf.nix
-    ./nvf/snacks.nix
-    ./nvidia.nix
-    ./packages/services.nix
-    ./packages/programs.nix
-    ./packages/packages.nix
-    ./selfhost/cloudflare-dyndns.nix
-    ./selfhost/nginx.nix
-    ../hjem/hjem.nix
-    ../hjem/niri.nix
-    ../hjem/mako.nix
-    ../hjem/foot.nix
-    ../hjem/fuzzel.nix
-    ../hjem/fish.nix
-    ../hjem/firefox.nix
-    ../hjem/mpv.nix
-    ../hjem/git.nix
-    ../../secrets/sops.nix
+    ../../modules/default.nix
   ];
 
   cloudflare-dyndns.enable = true;
+  microbin.enable = true;
+  nginx.enable = true;
 
   nixpkgs = {
     config = {
@@ -79,7 +62,7 @@
       ignis = {
         hashedPasswordFile = config.sops.secrets.user-password.path;
         isNormalUser = true;
-        extraGroups = ["wheel" "networkmanager"];
+        extraGroups = ["wheel"];
       };
     };
   };

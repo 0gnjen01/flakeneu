@@ -1,16 +1,25 @@
-{...}: {
-  networking.firewall.allowedTCPPorts = [80 443];
-  services.nginx = {
-    enable = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    recommendedUwsgiSettings = true;
-    recommendedProxySettings = true;
-    recommendedBrotliSettings = true;
+{
+  config,
+  lib,
+  ...
+}: {
+  options.nginx = {
+    enable = lib.mkEnableOption "enables nginx";
   };
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "ognjenk0l3@gmail.com";
+  config = lib.mkIf config.nginx.enable {
+    networking.firewall.allowedTCPPorts = [80 443];
+    services.nginx = {
+      enable = true;
+      recommendedTlsSettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      recommendedUwsgiSettings = true;
+      recommendedProxySettings = true;
+      recommendedBrotliSettings = true;
+    };
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "ognjenk0l3@gmail.com";
+    };
   };
 }

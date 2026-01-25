@@ -19,15 +19,20 @@
     )
   );
 in {
-  boot = {
-    kernelPackages = latestKernelPackage;
-    supportedFilesystems = ["zfs"];
-    zfs.forceImportRoot = true;
+  options.zfs = {
+    enable = lib.mkEnableOption "enables zfs";
   };
+  config = lib.mkIf config.zfs {
+    boot = {
+      kernelPackages = latestKernelPackage;
+      supportedFilesystems = ["zfs"];
+      zfs.forceImportRoot = true;
+    };
 
-  services.zfs = {
-    autoScrub.enable = true;
-    trim.enable = true;
-    autoSnapshot.enable = true;
+    services.zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+      autoSnapshot.enable = true;
+    };
   };
 }
