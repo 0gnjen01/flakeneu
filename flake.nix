@@ -41,7 +41,7 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./nixos/configuration.nix
+        ./modules/nixos/configuration.nix
         inputs.nvf.nixosModules.default
         inputs.hjem.nixosModules.default
         inputs.sops-nix.nixosModules.default

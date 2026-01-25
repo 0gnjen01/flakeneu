@@ -29,7 +29,7 @@
     ../hjem/firefox.nix
     ../hjem/mpv.nix
     ../hjem/git.nix
-    ../secrets/sops.nix
+    ../../secrets/sops.nix
   ];
 
   nixpkgs = {

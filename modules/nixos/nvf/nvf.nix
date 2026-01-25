@@ -10,6 +10,10 @@
     };
   };
 
+  imports = [
+    ./snacks.nix
+  ];
+
   programs.nvf = {
     enable = true;
     settings = {

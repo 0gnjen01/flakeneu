@@ -1,6 +1,6 @@
-{...}: {
+{lib, ...}: {
   services.homepage-dashboard = {
-    enable = true;
+    enable = lib.mkEnableOption;
     openFirewall = true;
     widgets = [
       {
