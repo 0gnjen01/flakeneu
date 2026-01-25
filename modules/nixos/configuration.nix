@@ -17,9 +17,8 @@
     ./packages/services.nix
     ./packages/programs.nix
     ./packages/packages.nix
-    ./selfhost/cloudflare-dydns.nix
+    ./selfhost/cloudflare-dyndns.nix
     ./selfhost/nginx.nix
-    ./selfhost/microbin.nix
     ../hjem/hjem.nix
     ../hjem/niri.nix
     ../hjem/mako.nix
@@ -31,6 +30,8 @@
     ../hjem/git.nix
     ../../secrets/sops.nix
   ];
+
+  cloudflare-dyndns.enable = true;
 
   nixpkgs = {
     config = {
