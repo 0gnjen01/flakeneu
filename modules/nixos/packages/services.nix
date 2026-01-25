@@ -10,20 +10,6 @@
 
   config = lib.mkIf config.services.enable {
     services = {
-      displayManager.autoLogin = {
-        enable = true;
-        user = "ignis";
-      };
-      greetd = {
-        enable = true;
-        settings = rec {
-          initial_session = {
-            command = "niri-session";
-            user = "ignis";
-          };
-          default_session = initial_session;
-        };
-      };
       pipewire = {
         enable = true;
         audio.enable = true;

@@ -41,7 +41,7 @@
     options = ["zfsutil"];
   };
 
-  fileSystems."boot" = {
+  fileSystems."/boot" = {
     device = "/dev/disk/by-id/wwn-0x5001b448b66f83b4-part1";
     fsType = "vfat";
   };

@@ -12,6 +12,8 @@
     ../../modules/default.nix
   ];
 
+  niri.enable = true;
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -53,7 +55,7 @@
       ignis = {
         hashedPasswordFile = config.sops.secrets.user-password.path;
         isNormalUser = true;
-        extraGroups = ["wheel" "networkmanager"];
+        extraGroups = ["wheel" "networkmanager" "videp"];
       };
     };
   };

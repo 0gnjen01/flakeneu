@@ -20,8 +20,6 @@
         config = {
           niri."org.freedesktop.impl.portal.FileChooser" = "gtk";
           niri.default = lib.mkForce "gnome";
-          common.default = "gnome";
-          obs.default = "gnome";
         };
       };
       mime.defaultApplications = {
@@ -31,6 +29,7 @@
         ];
       };
     };
+
     environment.systemPackages = with pkgs; [
       xwayland-satellite
       libxcursor
@@ -38,6 +37,7 @@
       cliphist
       gnome-keyring
       playerctl
+      brightnessctl
     ];
 
     environment.variables = {
@@ -45,6 +45,23 @@
       DISPLAY = ":0";
       __NV_PRIME_RENDER_OFFLOAD = "1";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    };
+
+    services = {
+      displayManager.autoLogin = {
+        enable = true;
+        user = "ignis";
+      };
+      greetd = {
+        enable = true;
+        settings = rec {
+          initial_session = {
+            command = "niri-session";
+            user = "ignis";
+          };
+          default_session = initial_session;
+        };
+      };
     };
 
     hjem.users.ignis = {
@@ -112,7 +129,7 @@
 
         prefer-no-csd
 
-        spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallhaven-5d3867_1920x1080.png"
+        spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallpaper.png"
 
         window-rule {
           match title="Firefox"
@@ -136,6 +153,10 @@
             XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
             XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
             XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+            XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+            XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+
 
             Mod+O repeat=false { toggle-overview; }
 

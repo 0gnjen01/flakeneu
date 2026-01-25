@@ -9,7 +9,6 @@
     ./mako.nix
     ./mpv.nix
     ./niri.nix
-    ./river.nix
   ];
   hjem.enable = lib.mkDefault true;
   firefox.enable = lib.mkDefault true;
