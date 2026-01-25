@@ -9,7 +9,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/default.nix
+    ../../modules
   ];
 
   cloudflare-dyndns.enable = true;

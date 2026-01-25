@@ -1,5 +1,7 @@
 {lib, ...}: {
   imports = [
+    ./packages
+    ./selfhost
     ./nvf/nvf.nix
     ./nvidia.nix
     ./thunar.nix
