@@ -19,7 +19,7 @@
     )
   );
 in {
-  options.zfs.enable = {
+  options.zfs = {
     enable = lib.mkEnableOption "enables zfs";
   };
   config = lib.mkIf config.zfs.enable {
