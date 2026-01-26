@@ -27,7 +27,6 @@
       winetricks
       fd
       eza
-      obsidian
       gcc
     ];
   };

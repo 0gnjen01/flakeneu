@@ -29,7 +29,7 @@
         max-icon-size=64
         default-timeout=5000
         ignore-timeout=1
-        font=DejaVu Sans Book Mono 13
+        font=DejaVu Sans Book 13
 
         [urgency=high]
         border-color=#c4b28a

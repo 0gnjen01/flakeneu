@@ -26,13 +26,27 @@ in {
     boot = {
       kernelPackages = latestKernelPackage;
       supportedFilesystems = ["zfs"];
-      zfs.forceImportRoot = true;
+      zfs = {
+        forceImportRoot = true;
+        package = pkgs.zfs_unstable;
+      };
     };
 
-    services.zfs = {
-      autoScrub.enable = true;
-      trim.enable = true;
-      autoSnapshot.enable = true;
+    services = {
+      zfs = {
+        trim.enable = true;
+        autoSnapshot.enable = true;
+      };
+      sanoid = {
+        enable = true;
+        templates."template" = {
+          hourly = 8;
+        };
+        datasets = {
+          "zpool/root".useTemplate = ["template"];
+          "zpool/home".useTemplate = ["template"];
+        };
+      };
     };
   };
 }

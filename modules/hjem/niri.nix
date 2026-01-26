@@ -45,6 +45,7 @@
       DISPLAY = ":0";
       __NV_PRIME_RENDER_OFFLOAD = "1";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      QT_XCB_GL_INTEGRATION = "none";
     };
 
     services = {
