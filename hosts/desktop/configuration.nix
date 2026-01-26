@@ -15,6 +15,7 @@
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
   nginx.enable = true;
+  minecraft.enable = true;
 
   nixpkgs = {
     config = {

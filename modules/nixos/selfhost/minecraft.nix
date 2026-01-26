@@ -20,7 +20,7 @@
       servers = {
         create-mod = {
           enable = true;
-          package = pkgs.fabricServers.fabric-1_20_1;
+          package = pkgs.fabricServers.fabric-1_21_11;
           jvmOpts = ''-Xms4G -Xmx4G -XX:+UseZGC -XX:+ZGenerational'';
           operators = {
             ognjen = "14366532-0366-48a7-a092-b66023910f2b";
@@ -36,13 +36,8 @@
           };
           symlinks = {
             mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-              Create-Fabric = pkgs.fetchurl {
-                url = "https://cdn.modrinth.com/data/Xbc0uyRg/versions/HAqwA6X1/create-fabric-6.0.8.1%2Bbuild.1744-mc1.20.1.jar";
-                sha512 = "sha512-btrduTvIe/ggQ3bTzt3T49/sHXFlVqWSWALyreWc5aZg3tUAiPqUGIhC/4P8KURTY9+l1CPkJbFXQJKDO2+olg";
-              };
               Distant-Horizons = pkgs.fetchurl {
                 url = "https://cdn.modrinth.com/data/uCdwusMi/versions/lC6CwqPp/DistantHorizons-2.4.5-b-1.20.1-fabric-forge.jar";
-
                 sha512 = "sha512-Z5y2+bVdfupDwX8CBAQhQFkN5xKwzs3BQBboBkqYRmleL0OJIjd/ZY4mU0xJy2Hm2pOaa+U8LLHNG8CItp2z7g";
               };
               Chunky = pkgs.fetchurl {
