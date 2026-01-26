@@ -9,6 +9,7 @@
     ./mako.nix
     ./mpv.nix
     ./niri.nix
+    ./yambar.nix
   ];
   hjem.enable = lib.mkDefault true;
   firefox.enable = lib.mkDefault true;
@@ -19,4 +20,5 @@
   mako.enable = lib.mkDefault true;
   mpv.enable = lib.mkDefault true;
   niri.enable = lib.mkDefault true;
+  yambar.enable = lib.mkDefault true;
 }
