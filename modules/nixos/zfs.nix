@@ -40,7 +40,10 @@ in {
       sanoid = {
         enable = true;
         templates."template" = {
-          hourly = 8;
+          hourly = 10;
+          daily = 5;
+          weekly = 3;
+          monthly = 1;
         };
         datasets = {
           "zpool/root".useTemplate = ["template"];

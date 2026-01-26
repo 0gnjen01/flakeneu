@@ -18,9 +18,9 @@
       eula = true;
       openFirewall = true;
       servers = {
-        create-mod = {
+        vanilla = {
           enable = true;
-          package = pkgs.fabricServers.fabric-1_21_11;
+          package = pkgs.fabricServers.fabric-1_20_1;
           jvmOpts = ''-Xms4G -Xmx4G -XX:+UseZGC -XX:+ZGenerational'';
           operators = {
             ognjen = "14366532-0366-48a7-a092-b66023910f2b";
