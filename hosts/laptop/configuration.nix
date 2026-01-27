@@ -12,6 +12,7 @@
     ../../modules/default.nix
   ];
 
+  nvidia-prime.enable = true;
   services.auto-cpufreq.enable = true;
 
   nixpkgs = {
