@@ -12,7 +12,7 @@
     ../../modules/default.nix
   ];
 
-  niri.enable = true;
+  services.auto-cpufreq.enable = true;
 
   nixpkgs = {
     config = {
