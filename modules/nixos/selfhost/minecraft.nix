@@ -20,6 +20,7 @@
       servers = {
         vanilla = {
           enable = true;
+          autoStart = false;
           package = pkgs.fabricServers.fabric-1_20_1;
           jvmOpts = ''-Xms6G -Xmx6G -XX:+UseZGC -XX:+ZGenerational'';
           operators = {
@@ -29,8 +30,7 @@
             server-port = 25565;
             difficulty = 3;
             gamemode = 0;
-            level-seed = -1331168131621704834;
-            max-world-size = 5000;
+            max-world-size = 2000;
             simulation-distance = 4;
             view-distance = 8;
             spawn-protection = 0;
@@ -39,10 +39,6 @@
           };
           symlinks = {
             mods = pkgs.linkFarmFromDrvs "mods" (builtins.attrValues {
-              Create-Fabric = pkgs.fetchurl {
-                url = "https://cdn.modrinth.com/data/Xbc0uyRg/versions/HAqwA6X1/create-fabric-6.0.8.1%2Bbuild.1744-mc1.20.1.jar";
-                sha512 = "sha512-btrduTvIe/ggQ3bTzt3T49/sHXFlVqWSWALyreWc5aZg3tUAiPqUGIhC/4P8KURTY9+l1CPkJbFXQJKDO2+olg";
-              };
               Skin-Restorer = pkgs.fetchurl {
                 url = "https://cdn.modrinth.com/data/ghrZDhGW/versions/b8GoBEZd/skinrestorer-2.5.0%2B1.20-fabric.jar";
                 sha512 = "sha512-z4usRPp/4JVO/Jy5Z13UnoFH+7s6PCjJ2+Wz2KGXl48Kb8DNuCr0XmXjLT2qme5kRqnsfmGqLwVLSZs3O+wcGQ";

@@ -27,7 +27,7 @@
       winetricks
       fd
       eza
-      gcc
+      clang
     ];
   };
 }

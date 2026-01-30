@@ -39,6 +39,9 @@
         keyMode = "vi";
         clock24 = true;
       };
+      direnv = {
+        loadInNixShell = true;
+      };
     };
   };
 }
