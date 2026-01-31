@@ -40,7 +40,11 @@
         clock24 = true;
       };
       direnv = {
+        enable = true;
+        nix-direnv.enable = true;
+        silent = true;
         loadInNixShell = true;
+        enableFishIntegration = true;
       };
     };
   };

@@ -18,8 +18,8 @@
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-minecraft = {
@@ -43,6 +43,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/desktop/configuration.nix
+          ./modules/hjem/noctalia.nix
           inputs.nvf.nixosModules.default
           inputs.hjem.nixosModules.default
           inputs.sops-nix.nixosModules.default
@@ -52,6 +53,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/laptop/configuration.nix
+          ./modules/hjem/noctalia.nix
           inputs.nvf.nixosModules.default
           inputs.hjem.nixosModules.default
           inputs.sops-nix.nixosModules.default

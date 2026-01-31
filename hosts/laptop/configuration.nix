@@ -60,6 +60,8 @@
     };
   };
 
+  zramSwap.enable = true;
+
   time.timeZone = "Europe/Belgrade";
 
   security.rtkit.enable = true;
