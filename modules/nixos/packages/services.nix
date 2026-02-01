@@ -18,15 +18,6 @@
       openssh = {
         enable = true;
       };
-<<<<<<< HEAD
-    };
-    services.flatpak.enable = true;
-    system.userActivationScripts = {
-      flatpak = {
-        text = ''
-          ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        '';
-=======
       auto-cpufreq = {
         enable = lib.mkDefault false;
         settings = {
@@ -48,7 +39,6 @@
             ${pkgs.flatpak}/bin/flatpak install flathub org.vinegarhq.Sober
           '';
         };
->>>>>>> c56bad5 (added nvidia-prime added cpu thing)
       };
     };
   };
