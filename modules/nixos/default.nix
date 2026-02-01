@@ -4,6 +4,7 @@
     ./selfhost
     ./nvf.nix
     ./nvidia.nix
+    ./nvidia-prime.nix
     ./thunar.nix
     ./zfs.nix
   ];
