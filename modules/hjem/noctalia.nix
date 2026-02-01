@@ -63,13 +63,23 @@
                     "useDistroLogo": false
                   },
                   {
-                    "customFont": "",
-                    "formatHorizontal": "HH:mm ddd, MMM dd",
-                    "formatVertical": "HH mm - dd MM",
-                    "id": "Clock",
-                    "tooltipFormat": "HH:mm ddd, MMM dd",
-                    "useCustomFont": false,
-                    "usePrimaryColor": false
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": true,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": false,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "index",
+                    "occupiedColor": "secondary",
+                    "reverseScroll": false,
+                    "showApplications": false,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
                   },
                   {
                     "colorizeIcons": false,
@@ -97,27 +107,23 @@
                     "showVisualizer": false,
                     "useFixedWidth": false,
                     "visualizerType": "linear"
+                  },
+                  {
+                    "colorName": "primary",
+                    "hideWhenIdle": true,
+                    "id": "AudioVisualizer",
+                    "width": 200
                   }
                 ],
                 "center": [
                   {
-                    "characterCount": 2,
-                    "colorizeIcons": false,
-                    "emptyColor": "secondary",
-                    "enableScrollWheel": true,
-                    "focusedColor": "primary",
-                    "followFocusedScreen": false,
-                    "groupedBorderOpacity": 1,
-                    "hideUnoccupied": false,
-                    "iconScale": 0.8,
-                    "id": "Workspace",
-                    "labelMode": "index",
-                    "occupiedColor": "secondary",
-                    "reverseScroll": false,
-                    "showApplications": false,
-                    "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
+                    "customFont": "",
+                    "formatHorizontal": "HH:mm ddd, MMM dd",
+                    "formatVertical": "HH mm - dd MM",
+                    "id": "Clock",
+                    "tooltipFormat": "HH:mm ddd, MMM dd",
+                    "useCustomFont": false,
+                    "usePrimaryColor": false
                   }
                 ],
                 "right": [
@@ -128,6 +134,18 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": []
+                  },
+                  {
+                    "hideWhenZero": false,
+                    "hideWhenZeroUnread": false,
+                    "id": "NotificationHistory",
+                    "showUnreadBadge": true,
+                    "unreadBadgeColor": "primary"
+                  },
+                  {
+                    "displayMode": "onhover",
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol"
                   },
                   {
                     "deviceNativePath": "__default__",
@@ -141,14 +159,24 @@
                   },
                   {
                     "displayMode": "onhover",
-                    "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol"
-                  },
-                  {
-                    "displayMode": "onhover",
                     "id": "Brightness"
                   },
                   {
+                    "defaultSettings": {
+                      "audioCodec": "opus",
+                      "audioSource": "default_output",
+                      "colorRange": "limited",
+                      "copyToClipboard": false,
+                      "directory": "",
+                      "filenamePattern": "recording_yyyyMMdd_HHmmss",
+                      "frameRate": "60",
+                      "hideInactive": false,
+                      "quality": "very_high",
+                      "resolution": "original",
+                      "showCursor": true,
+                      "videoCodec": "h264",
+                      "videoSource": "portal"
+                    },
                     "id": "plugin:screen-recorder"
                   }
                 ]
@@ -161,17 +189,17 @@
               "showScreenCorners": true,
               "forceBlackScreenCorners": false,
               "scaleRatio": 1,
-              "radiusRatio": 1,
-              "iRadiusRatio": 1,
+              "radiusRatio": 0,
+              "iRadiusRatio": 0,
               "boxRadiusRatio": 1,
               "screenRadiusRatio": 1,
               "animationSpeed": 1,
-              "animationDisabled": false,
+              "animationDisabled": true,
               "compactLockScreen": false,
               "lockOnSuspend": false,
               "showSessionButtonsOnLockScreen": true,
               "showHibernateOnLockScreen": false,
-              "enableShadows": false,
+              "enableShadows": true,
               "shadowDirection": "bottom_right",
               "shadowOffsetX": 2,
               "shadowOffsetY": 3,
@@ -185,11 +213,11 @@
               "allowPasswordWithFprintd": false
             },
             "ui": {
-              "fontDefault": "DejaVu Sans",
+              "fontDefault": "DejaVu Sans Mono",
               "fontFixed": "DejaVu Sans Mono",
               "fontDefaultScale": 1,
               "fontFixedScale": 1,
-              "tooltipsEnabled": false,
+              "tooltipsEnabled": true,
               "panelBackgroundOpacity": 0.93,
               "panelsAttachedToBar": true,
               "settingsPanelMode": "attached",
@@ -197,7 +225,7 @@
               "bluetoothDetailsViewMode": "grid",
               "networkPanelView": "wifi",
               "bluetoothHideUnnamedDevices": false,
-              "boxBorderEnabled": false
+              "boxBorderEnabled": true
             },
             "location": {
               "name": "Belgrade",
@@ -443,7 +471,7 @@
               ]
             },
             "notifications": {
-              "enabled": false,
+              "enabled": true,
               "monitors": [],
               "location": "top_right",
               "overlayLayer": true,

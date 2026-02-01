@@ -22,7 +22,7 @@
 
     sops.secrets.nextcloud_password = {};
 
-    services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
+    services.nginx.virtualHosts."nextcloud.1gnis.me" = {
       forceSSL = true;
       enableACME = true;
     };
