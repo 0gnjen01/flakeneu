@@ -11,6 +11,9 @@
       sopsFile = ../../../secrets/microbin.env;
       format = "dotenv";
     };
+
+    networking.firewall.allowedTCPPorts = [80 443];
+
     services = {
       microbin = {
         enable = true;
@@ -32,7 +35,6 @@
         };
       };
       nginx = {
-        clientMaxBodySize = "1G";
         virtualHosts."microbin.1gnis.me" = {
           enableACME = true;
           forceSSL = true;

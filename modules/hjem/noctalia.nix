@@ -14,15 +14,14 @@
   };
 
   config = lib.mkIf config.noctalia.enable {
-    environment = {
-      systemPackages = with pkgs; [
-        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
-        brightnessctl
-      ];
-      fonts.packages = with pkgs; [
-        nerd-fonts.dejavu-sans-mono
-      ];
-    };
+    environment.systemPackages = with pkgs; [
+      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      brightnessctl
+      gpu-screen-recorder
+    ];
+    fonts.packages = with pkgs; [
+      nerd-fonts.dejavu-sans-mono
+    ];
 
     services.noctalia-shell.enable = true;
 

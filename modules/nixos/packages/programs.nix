@@ -31,9 +31,6 @@
           pkgs.obs-studio-plugins.wlrobs
         ];
       };
-      yazi = {
-        enable = true;
-      };
       tmux = {
         enable = true;
         keyMode = "vi";

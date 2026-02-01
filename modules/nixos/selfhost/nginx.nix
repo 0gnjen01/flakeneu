@@ -16,6 +16,7 @@
       recommendedUwsgiSettings = true;
       recommendedProxySettings = true;
       recommendedBrotliSettings = true;
+      clientMaxBodySize = "1G";
     };
     security.acme = {
       acceptTerms = true;

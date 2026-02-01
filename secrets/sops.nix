@@ -4,11 +4,11 @@
   pkgs,
   ...
 }: {
-  options.sops = {
+  options.sops-nix = {
     enable = lib.mkEnableOption "enables sops-nix";
   };
 
-  config = lib.mkIf config.sops.enable {
+  config = lib.mkIf config.sops-nix.enable {
     environment.systemPackages = [pkgs.sops];
     sops = {
       defaultSopsFile = ./secrets.yaml;

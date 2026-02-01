@@ -4,5 +4,5 @@
     ./nixos
     ../secrets/sops.nix
   ];
-  sops.enable = lib.mkDefault true;
+  sops-nix.enable = lib.mkDefault true;
 }
