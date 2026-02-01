@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  options.nvidia = {
+  options.nvidia-prime = {
     enable = lib.mkEnableOption "enables nvidia-prime";
   };
   config = lib.mkIf config.nvidia-prime.enable {
