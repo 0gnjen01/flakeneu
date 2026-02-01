@@ -6,7 +6,6 @@
     ./foot.nix
     ./fuzzel.nix
     ./git.nix
-    ./mako.nix
     ./mpv.nix
     ./niri.nix
     ./noctalia.nix
@@ -17,7 +16,6 @@
   foot.enable = lib.mkDefault true;
   fuzzel.enable = lib.mkDefault true;
   git.enable = lib.mkDefault true;
-  mako.enable = lib.mkDefault true;
   mpv.enable = lib.mkDefault true;
   niri.enable = lib.mkDefault true;
   noctalia.enable = lib.mkDefault true;
