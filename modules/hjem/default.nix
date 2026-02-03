@@ -1,7 +1,6 @@
 {lib, ...}: {
   imports = [
     ./hjem.nix
-    ./firefox.nix
     ./fish.nix
     ./foot.nix
     ./fuzzel.nix
@@ -11,7 +10,6 @@
     ./noctalia.nix
   ];
   hjem.enable = lib.mkDefault true;
-  firefox.enable = lib.mkDefault true;
   fish.enable = lib.mkDefault true;
   foot.enable = lib.mkDefault true;
   fuzzel.enable = lib.mkDefault true;

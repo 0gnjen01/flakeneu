@@ -28,7 +28,7 @@
     hjem.users.ignis = {
       xdg.config.files = {
         "noctalia/settings.json".text = ''
-          {
+                    {
             "settingsVersion": 46,
             "bar": {
               "barType": "simple",
@@ -107,12 +107,6 @@
                     "showVisualizer": false,
                     "useFixedWidth": false,
                     "visualizerType": "linear"
-                  },
-                  {
-                    "colorName": "primary",
-                    "hideWhenIdle": true,
-                    "id": "AudioVisualizer",
-                    "width": 200
                   }
                 ],
                 "center": [
@@ -213,7 +207,7 @@
               "allowPasswordWithFprintd": false
             },
             "ui": {
-              "fontDefault": "DejaVu Sans Mono",
+              "fontDefault": "DejaVu Sans",
               "fontFixed": "DejaVu Sans Mono",
               "fontDefaultScale": 1,
               "fontFixedScale": 1,
