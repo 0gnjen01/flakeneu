@@ -12,7 +12,7 @@
     environment.systemPackages = with pkgs; [
       vesktop
       lazygit
-      microfetch
+      fastfetch
       prismlauncher
       anki
       gajim

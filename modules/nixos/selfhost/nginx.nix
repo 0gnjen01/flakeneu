@@ -20,7 +20,11 @@
       recommendedProxySettings = true;
       recommendedBrotliSettings = true;
       clientMaxBodySize = "1G";
-      virtualHosts."1gnis.me".default = true;
+      virtualHosts."1gnis.me" = {
+        default = true;
+        enableACME = true;
+        forceSSL = true;
+      };
     };
     security.acme = {
       acceptTerms = true;

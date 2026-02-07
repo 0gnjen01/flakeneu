@@ -23,7 +23,7 @@
         };
       };
       mime.defaultApplications = {
-        "application/pdf" = "firefox.desktop";
+        "application/pdf" = "librewolf.desktop";
         "image/*" = [
           "swayimg.desktop"
         ];
@@ -142,7 +142,7 @@
 
             Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
             Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-            Mod+A { spawn "firefox"; }
+            Mod+A { spawn "librewolf"; }
             Mod+E { spawn "thunar"; }
 
             XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

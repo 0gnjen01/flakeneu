@@ -10,7 +10,7 @@
   config = lib.mkIf config.nextcloud.enable {
     services.nextcloud = {
       enable = true;
-      hostName = "1gnis";
+      hostName = "nextcloud.1gnis.me";
       package = pkgs.nextcloud32;
       config.adminpassFile = "${config.sops.secrets.nextcloud_password.path}";
       config.dbtype = "sqlite";
@@ -22,7 +22,7 @@
 
     sops.secrets.nextcloud_password = {};
 
-    services.nginx.virtualHosts."nextcloud.1gnis.me" = {
+    services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
       forceSSL = true;
       enableACME = true;
     };

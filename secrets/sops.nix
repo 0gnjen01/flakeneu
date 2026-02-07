@@ -14,7 +14,10 @@
       defaultSopsFile = ./secrets.yaml;
       defaultSopsFormat = "yaml";
 
+      useSystemdActivation = true;
+
       age.keyFile = "/home/ignis/.config/sops/age/keys.txt";
     };
+    systemd.services.sops-install-secrets.after = ["local-fs.target"];
   };
 }
