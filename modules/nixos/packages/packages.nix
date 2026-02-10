@@ -15,7 +15,6 @@
       fastfetch
       prismlauncher
       anki
-      gajim
       adwaita-icon-theme
       btop
       krita
@@ -23,8 +22,6 @@
       pavucontrol
       p7zip-rar
       qbittorrent
-      wineWowPackages.waylandFull
-      winetricks
       fd
       eza
       clang

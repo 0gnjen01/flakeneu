@@ -16,6 +16,7 @@
   microbin.enable = true;
   nginx.enable = true;
   nextcloud.enable = true;
+  searx.enable = true;
 
   nixpkgs = {
     config = {

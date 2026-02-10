@@ -11,6 +11,9 @@
     programs.firefox = {
       enable = true;
       package = pkgs.librewolf;
+      wrapperConfig = {
+        pipewireSupport = true;
+      };
       policies = {
         DisableTelemetry = true;
         DisableFirefoxStudies = true;
@@ -26,8 +29,15 @@
           "privacy.trackingprotection.socialtracking.enabled" = true;
         };
         SearchEngines = {
-          Default = "DuckDuckGo";
+          Default = "SearXNG";
           Add = [
+            {
+              Name = "SearXNG";
+              URLTemplate = "https://search.1gnis.me/search?q={searchTerms}";
+              Method = "GET";
+              IconURL = "https://search.1gnis.me/favicon.png";
+              Alias = "@se";
+            }
             {
               Name = "Nix Packages";
               URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
@@ -35,7 +45,6 @@
               IconURL = "https://search.nixos.org/favicon.png";
               Alias = "@np";
             }
-
             {
               Name = "Nix Options";
               URLTemplate = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";
@@ -43,9 +52,8 @@
               Method = "GET";
               Alias = "@no";
             }
-
             {
-              Name = "Dict cc";
+              Name = "Dictcc";
               URLTemplate = "https://www.dict.cc/?s={searchTerms}";
               IconURL = "https://dict.cc/favicon.ico";
               Method = "GET";

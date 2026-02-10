@@ -8,58 +8,53 @@
   };
   config = lib.mkIf config.searx.enable {
     services.searx = {
-      enable = false;
+      enable = true;
       redisCreateLocally = true;
 
-      # Rate limiting
-      limiterSettings = {
-        real_ip = {
-          x_for = 1;
-          ipv4_prefix = 32;
-          ipv6_prefix = 56;
-        };
+      domain = "https://search.1gnis.me";
 
-        botdetection = {
-          ip_limit = {
-            filter_link_local = true;
-            link_token = true;
-          };
-        };
-      };
-
-      runInUwsgi = true;
-
-      uwsgiConfig = {
-        socket = "/run/searx/searx.sock";
-        http = ":8888";
-        chmod-socket = "660";
-      };
-
-      # Searx configuration
       settings = {
-        # Instance settings
-        general = {
-          debug = false;
-          instance_name = "SearXNG Instance";
-          donation_url = false;
-          contact_url = false;
-          privacypolicy_url = false;
-          enable_metrics = false;
-        };
+        use_default_settings = true;
 
-        # User interface
+        default_doi_resolver = "sci-hub.se";
+
+        general = {
+          instance_name = "1gnis's instance";
+          git_url = "https://github.com/0gnjen01";
+        };
         ui = {
-          static_use_hash = true;
-          default_locale = "en";
           query_in_title = true;
-          infinite_scroll = false;
           center_alignment = true;
-          default_theme = "simple";
-          theme_args.simple_style = "auto";
-          search_on_category_select = false;
+          default_locale = "en";
           hotkeys = "vim";
         };
-
+        server = {
+          bind_address = "127.0.0.1";
+          public_instance = false;
+          secret_key = config.sops.secrets.searx.path;
+          pass_searxng_org = true;
+          method = "GET";
+        };
+        enabled_plugins = [
+          "Basic Calculator"
+          "Hash plugin"
+          "Tor check plugin"
+          "Open Access DOI rewrite"
+          "Hostnames plugin"
+          "Unit converter plugin"
+          "Tracker URL remover"
+        ];
+        search = {
+          safe_search = 0;
+          default_lang = "en-US";
+          autocomplete = "duckduckgo";
+        };
+        hostnames = {
+          remove = [
+            "(.*\.)?softonic.com$"
+            "(.*\.)?nixos.wiki$"
+          ];
+        };
         high_priority = [
           "(.*\.)?wikipedia.com$"
           "(.*\.)?reddit.com$"
@@ -67,41 +62,27 @@
           "(.*\.)?nixos.com$"
           "(.*\.)?archlinux.org$"
         ];
-
-        # Search engine settings
-        search = {
-          safe_search = 2;
-          autocomplete_min = 2;
-          autocomplete = "google";
-          ban_time_on_fail = 5;
-          max_ban_time_on_fail = 120;
+        outgoing = {
+          request_timeout = 2.0;
+          max_request_timeout = 3.0;
+          pool_connections = 20;
+          pool_maxsize = 5;
+          enable_http2 = true;
         };
-
-        # Server configuration
-        server = {
-          base_url = "https://search.1gnis.me";
-          port = 8888;
-          bind_address = "127.0.0.1";
-          secret_key = config.sops.secrets.searx.path;
-          limiter = true;
-          public_instance = true;
-          image_proxy = true;
-          method = "GET";
-        };
-
-        # Search engines
         engines = lib.mapAttrsToList (name: value: {inherit name;} // value) {
           "duckduckgo".disabled = true;
-          "brave".disabled = true;
-          "bing".disabled = false;
+          "google".disabled = false;
+          "startpage".disabled = true;
+          "brave".disabled = false;
+          "bing".disabled = true;
           "mojeek".disabled = true;
-          "mwmbl".disabled = false;
+          "mwmbl".disabled = true;
           "mwmbl".weight = 0.4;
           "qwant".disabled = true;
-          "crowdview".disabled = false;
+          "crowdview".disabled = true;
           "crowdview".weight = 0.5;
           "curlie".disabled = true;
-          "ddg definitions".disabled = false;
+          "ddg definitions".disabled = true;
           "ddg definitions".weight = 2;
           "wikibooks".disabled = false;
           "wikidata".disabled = false;
@@ -116,77 +97,63 @@
           "currency".disabled = true;
           "dictzone".disabled = true;
           "lingva".disabled = true;
-          "bing images".disabled = false;
-          "brave.images".disabled = true;
+          "bing images".disabled = true;
+          "brave.images".disabled = false;
           "duckduckgo images".disabled = true;
           "google images".disabled = false;
           "qwant images".disabled = true;
           "1x".disabled = true;
-          "artic".disabled = false;
-          "deviantart".disabled = false;
+          "artic".disabled = true;
+          "deviantart".disabled = true;
           "flickr".disabled = true;
-          "imgur".disabled = false;
+          "imgur".disabled = true;
           "library of congress".disabled = false;
           "material icons".disabled = true;
           "material icons".weight = 0.2;
-          "openverse".disabled = false;
+          "openverse".disabled = true;
           "pinterest".disabled = true;
-          "svgrepo".disabled = false;
+          "svgrepo".disabled = true;
           "unsplash".disabled = false;
-          "wallhaven".disabled = false;
+          "wallhaven".disabled = true;
           "wikicommons.images".disabled = false;
           "yacy images".disabled = true;
-          "bing videos".disabled = false;
+          "bing videos".disabled = true;
           "brave.videos".disabled = true;
           "duckduckgo videos".disabled = true;
-          "google videos".disabled = false;
-          "qwant videos".disabled = false;
+          "google videos".disabled = true;
+          "qwant videos".disabled = true;
           "dailymotion".disabled = true;
           "google play movies".disabled = true;
           "invidious".disabled = true;
           "odysee".disabled = true;
-          "peertube".disabled = false;
+          "peertube".disabled = true;
           "piped".disabled = true;
-          "rumble".disabled = false;
-          "sepiasearch".disabled = false;
+          "rumble".disabled = true;
+          "sepiasearch".disabled = true;
           "vimeo".disabled = true;
           "youtube".disabled = false;
           "brave.news".disabled = true;
           "google news".disabled = true;
         };
-
-        # Outgoing requests
-        outgoing = {
-          request_timeout = 5.0;
-          max_request_timeout = 15.0;
-          pool_connections = 100;
-          pool_maxsize = 15;
-          enable_http2 = true;
-        };
-
-        # Enabled plugins
-        enabled_plugins = [
-          "Basic Calculator"
-          "Hash plugin"
-          "Tor check plugin"
-          "Open Access DOI rewrite"
-          "Hostnames plugin"
-          "Unit converter plugin"
-          "Tracker URL remover"
-        ];
       };
+
+      configureUwsgi = true;
+
+      uwsgiConfig = {
+        disable-logging = true;
+        socket = "/run/searx/searx.sock";
+        chmod-socket = "660";
+        lazy-apps = true;
+      };
+
+      configureNginx = true;
     };
 
-    # User management
-    users.groups.searx.members = ["nginx"];
-
-    # Nginx configuration
     services.nginx = {
       virtualHosts = {
         "search.1gnis.me" = {
           forceSSL = true;
-          sslCertificate = "...";
-          sslCertificateKey = "...";
+          enableACME = true;
           locations = {
             "/" = {
               extraConfig = ''
@@ -197,5 +164,11 @@
         };
       };
     };
+    security.acme = {
+      certs = {
+        "search.1gnis.me".email = "ognjenk0l3@gmail.com";
+      };
+    };
+    sops.secrets.searx = {};
   };
 }
