@@ -20,7 +20,7 @@
         passwordFile = "${config.sops.secrets.microbin.path}";
         settings = {
           MICROBIN_BIND = "127.0.0.1";
-          MICROBIN_PORT = 8080;
+          MICROBIN_PORT = 8081;
           MICROBIN_PUBLIC_PATH = "https://microbin.1gnis.me";
           MICROBIN_READONLY = true;
           MICROBIN_HASH_IDS = true;

@@ -8,7 +8,7 @@
     enable = lib.mkEnableOption "enables nextcloud";
   };
   config = lib.mkIf config.nextcloud.enable {
-    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [8080];
+    networking.firewall.allowedTCPPorts = [8080];
 
     services.nextcloud = {
       enable = true;

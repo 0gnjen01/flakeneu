@@ -7,11 +7,12 @@
     enable = lib.mkEnableOption "enables searx";
   };
   config = lib.mkIf config.searx.enable {
-    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [8888];
+    networking.firewall.allowedTCPPorts = [8888];
 
     services.searx = {
       enable = true;
       redisCreateLocally = true;
+      domain = "http://nixos:8888/";
 
       settings = {
         use_default_settings = true;
@@ -32,6 +33,8 @@
           bind_address = "127.0.0.1";
           port = 8888;
           public_instance = false;
+          limiter = false;
+          base_url = "http://nixos:8888/";
           secret_key = config.sops.secrets.searx.path;
           pass_searxng_org = true;
           method = "GET";
@@ -136,38 +139,6 @@
           "brave.news".disabled = true;
           "google news".disabled = true;
         };
-      };
-
-      configureUwsgi = true;
-
-      uwsgiConfig = {
-        disable-logging = true;
-        socket = "/run/searx/searx.sock";
-        chmod-socket = "660";
-        lazy-apps = true;
-      };
-
-      configureNginx = true;
-    };
-
-    services.nginx = {
-      virtualHosts = {
-        "search.1gnis.me" = {
-          forceSSL = true;
-          enableACME = true;
-          locations = {
-            "/" = {
-              extraConfig = ''
-                uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};
-              '';
-            };
-          };
-        };
-      };
-    };
-    security.acme = {
-      certs = {
-        "search.1gnis.me".email = "ognjenk0l3@gmail.com";
       };
     };
     sops.secrets.searx = {};
