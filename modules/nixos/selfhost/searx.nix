@@ -12,7 +12,7 @@
     services.searx = {
       enable = true;
       redisCreateLocally = true;
-      domain = "http://nixos:8888/";
+      domain = "http://nixos.tailcbb636.ts.net:8888/";
 
       settings = {
         use_default_settings = true;
