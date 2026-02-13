@@ -12,11 +12,18 @@
     ../../modules
   ];
 
-  cloudflare-dyndns.enable = true;
-  microbin.enable = true;
-  nginx.enable = true;
-  nextcloud.enable = true;
-  searx.enable = true;
+  services = {
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "niri-session";
+          user = "ignis";
+        };
+        default_session = initial_session;
+      };
+    };
+  };
 
   nixpkgs = {
     config = {

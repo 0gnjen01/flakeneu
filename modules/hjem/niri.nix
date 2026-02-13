@@ -48,23 +48,6 @@
       QT_XCB_GL_INTEGRATION = "none";
     };
 
-    services = {
-      displayManager.autoLogin = {
-        enable = true;
-        user = "ignis";
-      };
-      greetd = {
-        enable = true;
-        settings = rec {
-          initial_session = {
-            command = "niri-session";
-            user = "ignis";
-          };
-          default_session = initial_session;
-        };
-      };
-    };
-
     hjem.users.ignis = {
       files = {
         ".icons/default/index.theme".text = ''
@@ -142,7 +125,7 @@
 
             Mod+Q hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
             Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-            Mod+A { spawn "librewolf"; }
+            Mod+A { spawn "wlr-which-key"; }
             Mod+E { spawn "thunar"; }
 
             XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }

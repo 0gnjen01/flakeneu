@@ -15,13 +15,14 @@
     environment.systemPackages = with pkgs; [
       wlr-which-key
     ];
+
     hjem.users.ignis = {
       xdg.config.files."wlr-which-key/config.yaml".text = ''
         font:  Dejavu Sans Mono:style=Book:size=12
         background: "#23262d"
         color: "#c5c9c7"
         border: "#c5c9c7"
-        separator: " ➜ "
+        separator: " - "
         border_width: 2
         corner_r: 0
         padding: 15 # Defaults to corner_r
@@ -36,13 +37,29 @@
         margin_left: 0
         margin_top: 0
 
-        namespace: "wlr_which_key"
-
         inhibit_compositor_keyboard_shortcuts: true
 
         auto_kbd_layout: true
 
         menu:
+          - key: "a"
+            desc: Apps
+            submenu:
+            - key: "a"
+              desc: Librewolf
+              cmd: librewolf
+            - key: "d"
+              desc: Discord
+              cmd: vesktop
+            - key: "s"
+              desc: Steam
+              cmd: steam
+            - key: "e"
+              desc: Anki
+              cmd: anki
+            - key: "f"
+              desc: Signal
+              cmd: signal-desktop
           - key: "p"
             desc: Power
             submenu:

@@ -18,21 +18,14 @@
       openssh = {
         enable = true;
       };
-      auto-cpufreq = {
-        enable = lib.mkDefault false;
-        settings = {
-          battery = {
-            governor = "powersave";
-            turbo = "never";
-          };
-          charger = {
-            governor = "performance";
-            turbo = "auto";
-          };
-        };
-      };
       flatpak.enable = true;
+      thermald.enable = true;
+      displayManager.autoLogin = {
+        enable = true;
+        user = "ignis";
+      };
     };
+
     system.userActivationScripts = {
       flatpak = {
         text = ''

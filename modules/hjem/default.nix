@@ -18,5 +18,5 @@
   mpv.enable = lib.mkDefault true;
   niri.enable = lib.mkDefault true;
   noctalia.enable = lib.mkDefault true;
-  wlr-which-key.nix = lib.mkDefault true;
+  wlr-which-key.enable = lib.mkDefault true;
 }

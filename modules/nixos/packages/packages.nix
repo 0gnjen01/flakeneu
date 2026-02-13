@@ -9,6 +9,10 @@
   };
 
   config = lib.mkIf config.packages.enable {
+    fonts.packages = with pkgs; [
+      twemoji-color-font
+      nerd-fonts.dejavu-sans-mono
+    ];
     environment.systemPackages = with pkgs; [
       vesktop
       lazygit
@@ -25,6 +29,8 @@
       fd
       eza
       clang
+      signal-desktop-bin
+      dino
     ];
   };
 }
