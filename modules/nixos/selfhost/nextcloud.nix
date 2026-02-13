@@ -16,8 +16,8 @@
       package = pkgs.nextcloud32;
       config.adminpassFile = "${config.sops.secrets.nextcloud_password.path}";
       config.dbtype = "sqlite";
-
-      sops.secrets.nextcloud_password = {};
     };
+
+    sops.secrets.nextcloud_password = {};
   };
 }
