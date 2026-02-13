@@ -8,7 +8,12 @@
   };
 
   config = lib.mkIf config.tailscale.enable {
-    services.tailscale.enable = true;
+    services = {
+      tailscale = {
+        enable = true;
+        authKeyFile = config.sops.secrets.tailscale.path;
+      };
+    };
     networking.nftables.enable = true;
     networking.firewall = {
       enable = true;
@@ -22,5 +27,6 @@
 
     systemd.network.wait-online.enable = false;
     boot.initrd.systemd.network.wait-online.enable = false;
+    sops.secrets.tailscale = {};
   };
 }

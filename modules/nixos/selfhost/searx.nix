@@ -7,11 +7,11 @@
     enable = lib.mkEnableOption "enables searx";
   };
   config = lib.mkIf config.searx.enable {
+    networking.firewall.interfaces.tailscale0.allowedTCPPorts = [8888];
+
     services.searx = {
       enable = true;
       redisCreateLocally = true;
-
-      domain = "https://search.1gnis.me";
 
       settings = {
         use_default_settings = true;
@@ -30,6 +30,7 @@
         };
         server = {
           bind_address = "127.0.0.1";
+          port = 8888;
           public_instance = false;
           secret_key = config.sops.secrets.searx.path;
           pass_searxng_org = true;
@@ -47,7 +48,7 @@
         search = {
           safe_search = 0;
           default_lang = "en-US";
-          autocomplete = "duckduckgo";
+          autocomplete = "google";
         };
         hostnames = {
           remove = [
