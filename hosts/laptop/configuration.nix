@@ -13,7 +13,6 @@
   ];
 
   nvidia-prime.enable = true;
-  tailscale.enable = true;
   minecraft.enable = true;
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
