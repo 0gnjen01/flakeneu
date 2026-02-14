@@ -20,8 +20,6 @@
   nginx.enable = true;
   searx.enable = true;
 
-  allowedTCPPorts = [22];
-
   services = {
     logind.settings.Login = {
       HandleLidSwitch = "ignore";
