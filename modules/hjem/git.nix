@@ -18,6 +18,10 @@
           init.defaultBranch = "master";
           gpg.format = "ssh";
           user.signingkey = "~/.ssh/id_ed25519.pub";
+          merge = {
+            conflictstyle = "diff3";
+          };
+          pull.rebase = false;
         };
       };
     };
