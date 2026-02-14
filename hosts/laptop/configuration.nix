@@ -12,6 +12,14 @@
     ../../modules/default.nix
   ];
 
+  nvf.enable = false;
+  foot.enable = false;
+  niri.enable = false;
+  wlr-which-key.enable = false;
+  mpv.enable = false;
+  fuzzel.enable = false;
+  librewolf.enable = false;
+
   nvidia-prime.enable = true;
   minecraft.enable = true;
   cloudflare-dyndns.enable = true;
@@ -26,6 +34,9 @@
   };
 
   services = {
+    resolved = {
+      enable = true;
+    };
     logind.settings.Login = {
       HandleLidSwitch = "ignore";
       HandleLidSwitchExternalPower = "ignore";
@@ -49,9 +60,45 @@
         STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
       };
     };
+    openssh = {
+      enable = true;
+    };
+    thermald.enable = true;
+  };
+
+  programs = {
+    tmux = {
+      enable = true;
+      keyMode = "vi";
+      clock24 = true;
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      silent = true;
+      loadInNixShell = true;
+      enableFishIntegration = true;
+    };
+    nh = {
+      enable = true;
+      flake = "/home/ignis/flakeneu";
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 3d";
+      };
+    };
   };
 
   powerManagement.powertop.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    lazygit
+    fastfetch
+    btop
+    fd
+    eza
+    vim
+  ];
 
   nixpkgs = {
     config = {
@@ -94,7 +141,7 @@
       ignis = {
         hashedPasswordFile = config.sops.secrets.user-password.path;
         isNormalUser = true;
-        extraGroups = ["wheel" "networkmanager" "videp"];
+        extraGroups = ["wheel" "networkmanager" "video"];
       };
     };
   };

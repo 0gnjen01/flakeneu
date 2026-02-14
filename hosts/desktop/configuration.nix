@@ -27,7 +27,61 @@
       enable = true;
       user = "ignis";
     };
+    pipewire = {
+      enable = true;
+      audio.enable = true;
+      wireplumber.enable = true;
+    };
+    flatpak.enable = true;
   };
+
+  system.userActivationScripts = {
+    flatpak = {
+      text = ''
+        ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+      '';
+    };
+  };
+
+  programs = {
+    nh = {
+      enable = true;
+      flake = "/home/ignis/flakeneu";
+      clean = {
+        enable = true;
+        extraArgs = "--keep 5 --keep-since 3d";
+      };
+    };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+      protontricks.enable = true;
+    };
+    thunderbird = {
+      enable = true;
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    vesktop
+    lazygit
+    fastfetch
+    prismlauncher
+    anki
+    adwaita-icon-theme
+    btop
+    krita
+    swayimg
+    pavucontrol
+    p7zip-rar
+    qbittorrent
+    fd
+    eza
+    clang
+    signal-desktop-bin
+    dino
+    nextcloud-client
+  ];
 
   nixpkgs = {
     config = {
