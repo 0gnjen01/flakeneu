@@ -13,6 +13,11 @@
   config = lib.mkIf config.minecraft.enable {
     nixpkgs.overlays = [inputs.nix-minecraft.overlay];
 
+    networking.firewall = {
+      allowedTCPPorts = [25565];
+      allowedUDPPorts = [25565];
+    };
+
     services.minecraft-servers = {
       enable = true;
       eula = true;
