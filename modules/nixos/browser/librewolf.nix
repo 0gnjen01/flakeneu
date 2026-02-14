@@ -29,11 +29,11 @@
           "privacy.trackingprotection.socialtracking.enabled" = true;
         };
         SearchEngines = {
-          Default = "DuckDuckGo";
+          Default = "SearXNG";
           Add = [
             {
               Name = "SearXNG";
-              URLTemplate = "https://search.1gnis.me/search?q={searchTerms}";
+              URLTemplate = "http://192.168.1.6:8888//search?q={searchTerms}";
               Method = "GET";
               IconURL = "https://search.1gnis.me/favicon.png";
               Alias = "@se";

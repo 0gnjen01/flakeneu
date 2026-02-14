@@ -10,7 +10,7 @@
   config = lib.mkIf config.cloudflare-dyndns.enable {
     services.cloudflare-dyndns = {
       enable = true;
-      domains = ["home.1gnis.me"];
+      domains = ["home.1gnis.me" "mc.1gnis.me"];
       apiTokenFile = config.sops.secrets.cloudflare_api_key.path;
       proxied = true;
     };
