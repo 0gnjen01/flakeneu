@@ -31,6 +31,7 @@
       clang
       signal-desktop-bin
       dino
+      nextcloud-client
     ];
   };
 }

@@ -32,7 +32,7 @@
           port = 8888;
           public_instance = false;
           limiter = false;
-          base_url = "http://nixos:8888/";
+          base_url = "http://localhost:8888/";
           secret_key = config.sops.secrets.searx.path;
           pass_searxng_org = true;
           method = "GET";
