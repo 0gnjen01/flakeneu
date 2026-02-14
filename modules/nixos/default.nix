@@ -2,7 +2,6 @@
   imports = [
     ./browser
     ./nvidia
-    ./packages
     ./selfhost
     ./nvf.nix
     ./thunar.nix
