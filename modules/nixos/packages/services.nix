@@ -20,10 +20,6 @@
       };
       flatpak.enable = true;
       thermald.enable = true;
-      displayManager.autoLogin = {
-        enable = true;
-        user = "ignis";
-      };
     };
 
     system.userActivationScripts = {

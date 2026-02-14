@@ -28,6 +28,7 @@
       HandleLidSwitchExternalPower = "ignore";
       HandleLidSwitchDocked = "ignore";
     };
+    getty.autologinUser = "ignis";
     tlp = {
       enable = true;
       settings = {

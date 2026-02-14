@@ -23,6 +23,10 @@
         default_session = initial_session;
       };
     };
+    displayManager.autoLogin = {
+      enable = true;
+      user = "ignis";
+    };
   };
 
   nixpkgs = {
