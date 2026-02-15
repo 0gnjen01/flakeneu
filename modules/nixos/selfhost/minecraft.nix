@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [inputs.nix-minecraft.nixosModules.minecraft-servers];
+
   options.minecraft = {
     enable = lib.mkEnableOption "enables minecraft";
   };
@@ -24,9 +25,10 @@
       openFirewall = true;
       servers = {
         vanilla = {
+          autoStart = false;
           enable = true;
-          package = pkgs.vanillaServers.vanilla-1_12_2;
-          jvmOpts = "-Xms4G -Xmx4G -XX:+UseG1GC";
+          package = pkgs.paperServers.paper-1_12_2;
+          jvmOpts = ''-Xms4G -Xmx4G -XX:+UseG1GC'';
           operators = {
             ognjen = "14366532-0366-48a7-a092-b66023910f2b";
           };

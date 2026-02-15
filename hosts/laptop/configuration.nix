@@ -12,7 +12,6 @@
     ../../modules/default.nix
   ];
 
-  nvf.enable = false;
   foot.enable = false;
   niri.enable = false;
   wlr-which-key.enable = false;
@@ -20,8 +19,8 @@
   fuzzel.enable = false;
   librewolf.enable = false;
 
-  nvidia-prime.enable = true;
   minecraft.enable = true;
+  nvidia-prime.enable = true;
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
   nextcloud.enable = true;
@@ -64,6 +63,7 @@
       enable = true;
     };
     thermald.enable = true;
+    upower.enable = true;
   };
 
   programs = {
@@ -95,9 +95,9 @@
     lazygit
     fastfetch
     btop
+    busybox
     fd
     eza
-    vim
   ];
 
   nixpkgs = {
@@ -134,6 +134,7 @@
     hostName = "nixos";
     hostId = "7b8c3093";
     networkmanager.enable = true;
+    interfaces.wlo1.wakeOnLan.enable = true;
   };
 
   users = {
