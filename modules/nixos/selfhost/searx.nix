@@ -17,10 +17,6 @@
 
         default_doi_resolver = "sci-hub.se";
 
-        general = {
-          instance_name = "1gnis's instance";
-          git_url = "https://github.com/0gnjen01";
-        };
         ui = {
           query_in_title = true;
           center_alignment = true;
@@ -75,7 +71,7 @@
           "duckduckgo".disabled = true;
           "google".disabled = false;
           "startpage".disabled = true;
-          "brave".disabled = false;
+          "brave".disabled = true;
           "bing".disabled = true;
           "mojeek".disabled = true;
           "mwmbl".disabled = true;
@@ -84,7 +80,7 @@
           "crowdview".disabled = true;
           "crowdview".weight = 0.5;
           "curlie".disabled = true;
-          "ddg definitions".disabled = true;
+          "ddg definitions".disabled = false;
           "ddg definitions".weight = 2;
           "wikibooks".disabled = false;
           "wikidata".disabled = false;

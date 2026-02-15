@@ -19,13 +19,14 @@
   fuzzel.enable = false;
   librewolf.enable = false;
 
-  nvidia-prime.enable = true;
   minecraft.enable = true;
+  nvidia-prime.enable = true;
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
   nextcloud.enable = true;
   nginx.enable = true;
   searx.enable = true;
+  ejabberd.enable = true;
 
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
@@ -63,6 +64,7 @@
       enable = true;
     };
     thermald.enable = true;
+    upower.enable = true;
   };
 
   programs = {
@@ -94,6 +96,7 @@
     lazygit
     fastfetch
     btop
+    busybox
     fd
     eza
   ];
@@ -132,6 +135,7 @@
     hostName = "nixos";
     hostId = "7b8c3093";
     networkmanager.enable = true;
+    interfaces.wlo1.wakeOnLan.enable = true;
   };
 
   users = {
