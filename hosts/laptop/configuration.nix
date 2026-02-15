@@ -26,7 +26,6 @@
   nextcloud.enable = true;
   nginx.enable = true;
   searx.enable = true;
-  ejabberd.enable = true;
 
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";
