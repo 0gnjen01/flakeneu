@@ -57,6 +57,7 @@
       gamescopeSession.enable = true;
       protontricks.enable = true;
     };
+    gamemode.enable = true;
     thunderbird = {
       enable = true;
     };
@@ -79,7 +80,9 @@
     eza
     clang
     signal-desktop-bin
+    viber
     dino
+    mangohud
   ];
 
   nixpkgs = {

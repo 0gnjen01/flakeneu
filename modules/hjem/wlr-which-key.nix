@@ -55,11 +55,17 @@
               desc: Steam
               cmd: steam
             - key: "e"
-              desc: Anki
-              cmd: anki
+              desc: Email
+              cmd: thunderbird
             - key: "f"
               desc: Signal
               cmd: signal-desktop
+            - key: "v"
+              desc: Viber
+              cmd: viber
+            - key: "k"
+              desc: Krita
+              cmd: krita
           - key: "p"
             desc: Power
             submenu:
