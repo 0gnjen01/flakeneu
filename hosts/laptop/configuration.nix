@@ -20,6 +20,7 @@
   librewolf.enable = false;
 
   minecraft.enable = true;
+  prosody.enable = true;
   nvidia-prime.enable = true;
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
