@@ -12,7 +12,6 @@
     ../../modules/default.nix
   ];
 
-  nvf.enable = false;
   foot.enable = false;
   niri.enable = false;
   wlr-which-key.enable = false;
@@ -97,7 +96,6 @@
     btop
     fd
     eza
-    vim
   ];
 
   nixpkgs = {
