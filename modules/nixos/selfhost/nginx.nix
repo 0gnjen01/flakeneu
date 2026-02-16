@@ -2,12 +2,17 @@
   config,
   lib,
   ...
-}: {
+}: let
+  domainName = "1gnis.me";
+in {
   options.nginx = {
     enable = lib.mkEnableOption "enables nginx";
   };
   config = lib.mkIf config.nginx.enable {
-    sops.secrets.cloudflare_api_key = {};
+    sops.secrets.cloudflare = {
+      sopsFile = ../../../secrets/cloudflare.env;
+      format = "dotenv";
+    };
 
     networking.firewall.allowedTCPPorts = [80 443];
 
@@ -20,14 +25,31 @@
       recommendedProxySettings = true;
       recommendedBrotliSettings = true;
       clientMaxBodySize = "1G";
+      virtualHosts."${domainName}" = {
+        forceSSL = true;
+        useACMEHost = "${domainName}";
+      };
     };
     security.acme = {
       acceptTerms = true;
       defaults = {
         email = "ognjenk0l3@gmail.com";
-        dnsProvider = "cloudflare";
-        credentialFiles = {
-          "CLOUDFLARE_API_KEY_FILE" = "${config.sops.secrets.cloudflare_api_key.path}";
+      };
+      certs = {
+        "${domainName}" = {
+          domain = "${domainName}";
+          group = config.services.nginx.group;
+          dnsProvider = "cloudflare";
+          environmentFile = "${config.sops.secrets.cloudflare.path}";
+          reloadServices = [
+            "nginx"
+            "prosody"
+          ];
+          extraDomainNames = [
+            "xmpp.${domainName}"
+            "muc.xmpp.${domainName}"
+            "upload.xmpp.${domainName}"
+          ];
         };
       };
     };

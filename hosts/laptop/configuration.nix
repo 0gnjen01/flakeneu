@@ -26,7 +26,6 @@
   microbin.enable = true;
   nextcloud.enable = true;
   nginx.enable = true;
-  searx.enable = true;
 
   systemd.services."getty@tty1" = {
     overrideStrategy = "asDropin";

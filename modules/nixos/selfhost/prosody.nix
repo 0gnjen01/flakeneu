@@ -3,8 +3,8 @@
   lib,
   ...
 }: let
-  sslCertDir = config.security.acme.certs."example.org".directory;
-  domainName = "example.org";
+  sslCertDir = config.security.acme.certs."1gnis.me".directory;
+  domainName = "1gnis.me";
 in {
   options.prosody = {
     enable = lib.mkEnableOption "enables prosody";
@@ -14,9 +14,13 @@ in {
       allowedTCPPorts = [
         5222
         5223
+        5269
         443
       ];
     };
+
+    users.users.prosody.extraGroups = ["nginx"];
+
     services = {
       prosody = {
         enable = true;
@@ -31,20 +35,33 @@ in {
             restrictRoomCreation = false;
           }
         ];
-        modules = {
-          admin_adhoc = true;
-          cloud_notify = false;
-          pep = false;
-          blocklist = false;
-          bookmarks = false;
-          dialback = false;
-          ping = true;
-          private = false;
-          register = false;
-          vcard_legacy = false;
+        virtualHosts = {
+          "${domainName}" = {
+            enabled = true;
+            domain = "${domainName}";
+            ssl = {
+              cert = "${sslCertDir}/fullchain.pem";
+              key = "${sslCertDir}/key.pem";
+            };
+          };
+          "xmpp.${domainName}" = {
+            enabled = true;
+            domain = "xmpp.${domainName}";
+            ssl = {
+              cert = "${sslCertDir}/fullchain.pem";
+              key = "${sslCertDir}/key.pem";
+            };
+          };
         };
-        xmppComplianceSuite = false;
+        httpFileShare = {
+          enable = true;
+          type = "external";
+          domain = "upload.xmpp.1gnis.me";
+          size_limit = 1024 * 1024 * 1024;
+        };
+        xmppComplianceSuite = true;
         extraConfig = ''
+          external_addresses = { "109.93.45.172" }
           storage = "sql"
           sql = {
             driver = "SQLite3";
