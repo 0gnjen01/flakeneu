@@ -25,7 +25,7 @@
       openFirewall = true;
       servers = {
         vanilla = {
-          autoStart = false;
+          autoStart = true;
           enable = true;
           package = pkgs.paperServers.paper-1_12_2;
           jvmOpts = ''-Xms4G -Xmx4G -XX:+UseG1GC'';
@@ -37,10 +37,10 @@
             difficulty = 3;
             gamemode = 0;
             max-world-size = 2000;
-            simulation-distance = 4;
-            view-distance = 8;
+            simulation-distance = 10;
+            view-distance = 10;
             spawn-protection = 0;
-            online-mode = false;
+            online-mode = true;
             motd = "1gnis's §lMC §r server hosted on §bNix§fOS!";
           };
         };

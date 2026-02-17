@@ -20,7 +20,6 @@
   librewolf.enable = false;
 
   minecraft.enable = true;
-  prosody.enable = true;
   nvidia-prime.enable = true;
   cloudflare-dyndns.enable = true;
   microbin.enable = true;
@@ -34,6 +33,9 @@
 
   services = {
     resolved = {
+      enable = true;
+    };
+    fail2ban = {
       enable = true;
     };
     logind.settings.Login = {

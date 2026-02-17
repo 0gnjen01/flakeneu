@@ -116,7 +116,7 @@
         spawn-sh-at-startup "${lib.getExe pkgs.wbg} ~/Pictures/Wallpapers/wallpaper.png"
 
         window-rule {
-          match title="Firefox"
+          match title="Librewolf"
           open-maximized true
         }
 

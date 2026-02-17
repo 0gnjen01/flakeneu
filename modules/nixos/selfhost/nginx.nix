@@ -12,6 +12,8 @@ in {
     sops.secrets.cloudflare = {
       sopsFile = ../../../secrets/cloudflare.env;
       format = "dotenv";
+      owner = "acme";
+      group = "acme";
     };
 
     networking.firewall.allowedTCPPorts = [80 443];
@@ -34,23 +36,12 @@ in {
       acceptTerms = true;
       defaults = {
         email = "ognjenk0l3@gmail.com";
-      };
-      certs = {
-        "${domainName}" = {
-          domain = "${domainName}";
-          group = config.services.nginx.group;
-          dnsProvider = "cloudflare";
-          environmentFile = "${config.sops.secrets.cloudflare.path}";
-          reloadServices = [
-            "nginx"
-            "prosody"
-          ];
-          extraDomainNames = [
-            "xmpp.${domainName}"
-            "muc.xmpp.${domainName}"
-            "upload.xmpp.${domainName}"
-          ];
-        };
+        group = config.services.nginx.group;
+        dnsProvider = "cloudflare";
+        environmentFile = "${config.sops.secrets.cloudflare.path}";
+        reloadServices = [
+          "nginx"
+        ];
       };
     };
   };
