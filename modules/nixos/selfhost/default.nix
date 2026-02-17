@@ -1,12 +1,12 @@
 {lib, ...}: {
   imports = [
-    ./cloudflare-dyndns.nix
+    ./cloudflare.nix
     ./microbin.nix
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
   ];
-  cloudflare-dyndns.enable = lib.mkDefault false;
+  cloudflare.enable = lib.mkDefault false;
   microbin.enable = lib.mkDefault false;
   minecraft.enable = lib.mkDefault false;
   nextcloud.enable = lib.mkDefault false;

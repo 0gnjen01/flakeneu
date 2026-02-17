@@ -19,9 +19,9 @@
   fuzzel.enable = false;
   librewolf.enable = false;
 
-  minecraft.enable = true;
+  minecraft.enable = false;
   nvidia-prime.enable = true;
-  cloudflare-dyndns.enable = true;
+  cloudflare.enable = true;
   microbin.enable = true;
   nextcloud.enable = true;
   nginx.enable = true;
@@ -93,6 +93,7 @@
 
   powerManagement.powertop.enable = true;
 
+  # packages
   environment.systemPackages = with pkgs; [
     lazygit
     fastfetch
@@ -100,6 +101,7 @@
     busybox
     fd
     eza
+    norgolith
   ];
 
   nixpkgs = {
@@ -137,6 +139,7 @@
     hostId = "7b8c3093";
     networkmanager.enable = true;
     interfaces.wlo1.wakeOnLan.enable = true;
+    firewall.allowedTCPPorts = [22];
   };
 
   users = {

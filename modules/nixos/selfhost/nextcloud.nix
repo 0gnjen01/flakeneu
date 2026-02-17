@@ -10,8 +10,13 @@
   config = lib.mkIf config.nextcloud.enable {
     services.nextcloud = {
       enable = true;
+      configureRedis = true;
       hostName = "nextcloud.1gnis.me";
       package = pkgs.nextcloud32;
+      extraApps = {
+        inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks notes;
+      };
+
       config.adminpassFile = "${config.sops.secrets.nextcloud_password.path}";
       config.dbtype = "sqlite";
       https = true;
