@@ -13,7 +13,7 @@
         enable = true;
         domains = ["1gnis.me"];
         apiTokenFile = config.sops.secrets.cloudflare_api_key.path;
-        proxied = true;
+        proxied = false;
       };
       cloudflared = {
         tunnels = {

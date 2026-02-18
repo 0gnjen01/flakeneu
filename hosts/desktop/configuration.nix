@@ -52,6 +52,11 @@
         extraArgs = "--keep 5 --keep-since 3d";
       };
     };
+    ssh = {
+      knownHosts."git.1gnis.me" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOU6NOkBTYL/8vGEMD8HYGJ1k2SOeYysCky3RjgumdoW ognjenk0l3@gmail.com";
+      };
+    };
     steam = {
       enable = true;
       gamescopeSession.enable = true;

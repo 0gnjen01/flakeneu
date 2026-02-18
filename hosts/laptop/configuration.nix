@@ -65,11 +65,25 @@
     openssh = {
       enable = true;
     };
+
     thermald.enable = true;
     upower.enable = true;
   };
 
   programs = {
+    ssh = {
+      knownHosts."git.1gnis.me" = {
+        extraHostNames = ["git.1gnis.me" "1gnis.me"];
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOU6NOkBTYL/8vGEMD8HYGJ1k2SOeYysCky3RjgumdoW ";
+      };
+      extraConfig = ''
+        Host git.1gnis.me
+        HostName ssh.1gnis.me
+        User git
+        ProxyCommand cloudflared access ssh --hostname %h
+        IdentityFile ~/.ssh/id_ed25519
+      '';
+    };
     tmux = {
       enable = true;
       keyMode = "vi";
