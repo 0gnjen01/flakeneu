@@ -102,6 +102,7 @@
     fd
     eza
     norgolith
+    cloudflared
   ];
 
   nixpkgs = {
@@ -139,7 +140,7 @@
     hostId = "7b8c3093";
     networkmanager.enable = true;
     interfaces.wlo1.wakeOnLan.enable = true;
-    firewall.allowedTCPPorts = [22];
+    firewall.allowedTCPPorts = [22 3030];
   };
 
   users = {

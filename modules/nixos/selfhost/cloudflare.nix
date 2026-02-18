@@ -13,10 +13,11 @@
         enable = true;
         domains = ["1gnis.me"];
         apiTokenFile = config.sops.secrets.cloudflare_api_key.path;
+        proxied = true;
       };
       cloudflared = {
         tunnels = {
-          "00000000-0000-0000-0000-000000000000" = {
+          "d305c4b3-57c2-455a-bf9c-d35fa50a099c" = {
             credentialsFile = "${config.sops.secrets.cloudflare.path}";
             default = "http_status:404";
           };
@@ -30,14 +31,14 @@
         # Added:
         "hmac-sha2-256"
       ];
+    };
 
-      sops.secrets = {
-        cloudflare = {
-          sopsFile = ../../../secrets/cloudflare.env;
-          format = "dotenv";
-        };
-        cloudflare_api_key = {};
+    sops.secrets = {
+      cloudflare = {
+        sopsFile = ../../../secrets/cloudflare.env;
+        format = "dotenv";
       };
+      cloudflare_api_key = {};
     };
   };
 }
