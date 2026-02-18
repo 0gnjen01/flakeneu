@@ -49,20 +49,17 @@
               desc: Librewolf
               cmd: librewolf
             - key: "d"
-              desc: Discord
-              cmd: vesktop
+              desc: Gajim
+              cmd: gajim
             - key: "s"
               desc: Steam
               cmd: steam
-            - key: "e"
-              desc: Email
+            - key: "m"
+              desc: Mail
               cmd: thunderbird
             - key: "f"
               desc: Signal
               cmd: signal-desktop
-            - key: "v"
-              desc: Viber
-              cmd: viber
             - key: "k"
               desc: Krita
               cmd: krita

@@ -8,6 +8,8 @@
     enable = lib.mkEnableOption "enables nextcloud";
   };
   config = lib.mkIf config.nextcloud.enable {
+    networking.firewall.allowedTCPPorts = [80 443];
+
     services.nextcloud = {
       enable = true;
       configureRedis = true;

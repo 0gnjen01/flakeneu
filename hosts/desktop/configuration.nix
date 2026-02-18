@@ -64,7 +64,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vesktop
     lazygit
     fastfetch
     prismlauncher
@@ -80,8 +79,7 @@
     eza
     clang
     signal-desktop-bin
-    viber
-    dino
+    gajim
     mangohud
   ];
 

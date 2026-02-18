@@ -29,7 +29,7 @@
           "privacy.trackingprotection.socialtracking.enabled" = true;
         };
         SearchEngines = {
-          Default = "SearXNG";
+          Default = "DuckDuckGo";
           Add = [
             {
               Name = "SearXNG";
