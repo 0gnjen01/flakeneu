@@ -112,6 +112,7 @@
     fd
     eza
     norgolith
+    cloudflared
   ];
 
   nixpkgs = {
