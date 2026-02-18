@@ -12,8 +12,6 @@
       format = "dotenv";
     };
 
-    networking.firewall.allowedTCPPorts = [80 443];
-
     services = {
       microbin = {
         enable = true;
@@ -36,17 +34,12 @@
       };
       nginx = {
         virtualHosts."microbin.1gnis.me" = {
-          enableACME = true;
-          forceSSL = true;
           locations."/" = {
-            proxyWebsockets = true;
             proxyPass = "http://127.0.0.1:8081";
+            proxyWebsockets = true;
           };
         };
       };
-    };
-    security.acme = {
-      certs."microbin.1gnis.me" = {};
     };
   };
 }

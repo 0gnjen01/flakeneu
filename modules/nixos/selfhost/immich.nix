@@ -17,8 +17,6 @@
         accelerationDevices = null;
       };
       nginx.virtualHosts."immich.1gnis.me" = {
-        enableACME = true;
-        forceSSL = true;
         locations."/" = {
           proxyPass = "http://[::1]:${toString config.services.immich.port}";
           proxyWebsockets = true;

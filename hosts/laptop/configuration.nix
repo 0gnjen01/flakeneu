@@ -34,12 +34,6 @@
   };
 
   services = {
-    resolved = {
-      enable = true;
-    };
-    fail2ban = {
-      enable = true;
-    };
     logind.settings.Login = {
       HandleLidSwitch = "ignore";
       HandleLidSwitchExternalPower = "ignore";
@@ -65,7 +59,6 @@
     };
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = false;
     };
 
     thermald.enable = true;
@@ -73,12 +66,6 @@
   };
 
   programs = {
-    ssh = {
-      knownHosts."git.1gnis.me" = {
-        extraHostNames = ["git.1gnis.me" "1gnis.me"];
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOU6NOkBTYL/8vGEMD8HYGJ1k2SOeYysCky3RjgumdoW ";
-      };
-    };
     tmux = {
       enable = true;
       keyMode = "vi";
@@ -150,7 +137,7 @@
     hostId = "7b8c3093";
     networkmanager.enable = true;
     interfaces.wlo1.wakeOnLan.enable = true;
-    firewall.allowedTCPPorts = [22 3030];
+    firewall.allowedTCPPorts = [22];
   };
 
   users = {

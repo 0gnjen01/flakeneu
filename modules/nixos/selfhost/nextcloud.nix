@@ -29,15 +29,6 @@
 
     sops.secrets.nextcloud_password = {};
 
-    services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-      forceSSL = true;
-      enableACME = true;
-    };
-
-    security.acme = {
-      certs = {
-        ${config.services.nextcloud.hostName}.email = "ognjenk0l3@gmail.com";
-      };
-    };
+    services.nginx.virtualHosts.${config.services.nextcloud.hostName} = {};
   };
 }

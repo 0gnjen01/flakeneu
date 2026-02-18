@@ -9,35 +9,39 @@
 
   config = lib.mkIf config.cloudflare.enable {
     services = {
-      cloudflare-dyndns = {
-        enable = true;
-        domains = ["1gnis.me"];
-        apiTokenFile = config.sops.secrets.cloudflare_api_key.path;
-        proxied = true;
-      };
       cloudflared = {
         enable = true;
         tunnels = {
           "d305c4b3-57c2-455a-bf9c-d35fa50a099c" = {
-            credentialsFile = config.sops.secrets.cloudflared.path;
+            credentialsFile = "/home/ignis/cred.json";
             default = "http_status:404";
             ingress = {
-              "1gnis.me" = "http://localhost:80";
+              "ssh.1gnis.me" = "ssh://localhost:22";
+              "nextcloud.1gnis.me" = "http://localhost:80";
+              "microbin.1gnis.me" = "http://localhost:80";
+              "immich.1gnis.me" = "http://localhost:80";
+              "git.1gnis.me" = "http://localhost:80";
             };
           };
         };
       };
+      openssh.settings.Macs = [
+        # Current defaults:
+        "hmac-sha2-512-etm@openssh.com"
+        "hmac-sha2-256-etm@openssh.com"
+        "umac-128-etm@openssh.com"
+        # Added:
+        "hmac-sha2-256"
+      ];
     };
-
-    sops.secrets = {
-      cloudflare_api_key = {};
-      cloudflared = {
-        sopsFile = ../../../secrets/cloudflared.json;
-        format = "json";
-        key = "";
-        owner = "cloudflared";
-        group = "cloudflared";
-      };
+    programs.ssh = {
+      extraConfig = ''
+        Host git.1gnis.me
+          HostName ssh.1gnis.me
+          User git
+          ProxyCommand cloudflared access ssh --hostname %h
+          IdentityFile ~/.ssh/id_ed25519
+      '';
     };
   };
 }

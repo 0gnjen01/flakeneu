@@ -16,8 +16,6 @@ in {
 
     services.nginx = {
       virtualHosts.${cfg.settings.server.DOMAIN} = {
-        forceSSL = true;
-        enableACME = true;
         extraConfig = ''
           client_max_body_size 512M;
         '';
@@ -55,7 +53,6 @@ in {
       pwd = config.sops.secrets.forgejo-admin-password;
       user = "1gnis"; # Note, Forgejo doesn't allow creation of an account named "admin"
     in ''
-      ${adminCmd} create --admin --email "root@localhost" --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
       ${adminCmd} change-password --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
     '';
   };
