@@ -20,6 +20,7 @@
   librewolf.enable = false;
 
   minecraft.enable = false;
+  forgejo.enable = true;
   nvidia-prime.enable = true;
   cloudflare.enable = true;
   microbin.enable = true;

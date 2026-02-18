@@ -7,36 +7,56 @@
   cfg = config.services.forgejo;
   srv = cfg.settings.server;
 in {
-  services.nginx = {
-    virtualHosts.${cfg.settings.server.DOMAIN} = {
-      forceSSL = true;
-      enableACME = true;
-      extraConfig = ''
-        client_max_body_size 512M;
-      '';
-      locations."/".proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
-    };
+  options.forgejo = {
+    enable = lib.mkEnableOption "enables forgejo";
   };
 
-  services.forgejo = {
-    enable = true;
-    database.type = "postgres";
-    # Enable support for Git Large File Storage
-    lfs.enable = true;
-    settings = {
-      server = {
-        DOMAIN = "git.1gnis.me";
-        # You need to specify this to remove the port from URLs in the web UI.
-        ROOT_URL = "https://${srv.DOMAIN}/";
-        HTTP_PORT = 3000;
-      };
-      # You can temporarily allow registration to create an admin user.
-      service.DISABLE_REGISTRATION = true;
-      # Add support for actions, based on act: https://github.com/nektos/act
-      actions = {
-        ENABLED = true;
-        DEFAULT_ACTIONS_URL = "github";
+  config = lib.mkIf config.forgejo.enable {
+    networking.firewall.allowedTCPPorts = [80 443];
+
+    services.nginx = {
+      virtualHosts.${cfg.settings.server.DOMAIN} = {
+        forceSSL = true;
+        enableACME = true;
+        extraConfig = ''
+          client_max_body_size 512M;
+        '';
+        locations."/".proxyPass = "http://localhost:${toString srv.HTTP_PORT}";
       };
     };
+
+    services.forgejo = {
+      enable = true;
+      database.type = "postgres";
+      # Enable support for Git Large File Storage
+      lfs.enable = true;
+      settings = {
+        server = {
+          DOMAIN = "git.1gnis.me";
+          # You need to specify this to remove the port from URLs in the web UI.
+          ROOT_URL = "https://${srv.DOMAIN}/";
+          HTTP_PORT = 3000;
+          SSH_PORT = lib.head config.services.openssh.ports;
+        };
+        # You can temporarily allow registration to create an admin user.
+        service.DISABLE_REGISTRATION = true;
+        # Add support for actions, based on act: https://github.com/nektos/act
+        actions = {
+          ENABLED = true;
+          DEFAULT_ACTIONS_URL = "github";
+        };
+      };
+    };
+
+    sops.secrets.forgejo-admin-password.owner = "forgejo";
+
+    systemd.services.forgejo.preStart = let
+      adminCmd = "${lib.getExe cfg.package} admin user";
+      pwd = config.sops.secrets.forgejo-admin-password;
+      user = "1gnis"; # Note, Forgejo doesn't allow creation of an account named "admin"
+    in ''
+      ${adminCmd} create --admin --email "root@localhost" --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+      ${adminCmd} change-password --username ${user} --password "$(tr -d '\n' < ${pwd.path})" || true
+    '';
   };
 }
