@@ -6,6 +6,7 @@
     ./nextcloud.nix
     ./nginx.nix
     ./forgejo.nix
+    ./immich.nix
   ];
   cloudflare.enable = lib.mkDefault false;
   microbin.enable = lib.mkDefault false;
@@ -13,4 +14,5 @@
   nextcloud.enable = lib.mkDefault false;
   nginx.enable = lib.mkDefault false;
   forgejo.enable = lib.mkDefault false;
+  immich.enable = lib.mkDefault false;
 }

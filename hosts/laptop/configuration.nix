@@ -21,6 +21,7 @@
 
   minecraft.enable = false;
   forgejo.enable = true;
+  immich.enable = true;
   nvidia-prime.enable = true;
   cloudflare.enable = true;
   microbin.enable = true;
@@ -64,6 +65,7 @@
     };
     openssh = {
       enable = true;
+      settings.PasswordAuthentication = false;
     };
 
     thermald.enable = true;
@@ -76,13 +78,6 @@
         extraHostNames = ["git.1gnis.me" "1gnis.me"];
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOU6NOkBTYL/8vGEMD8HYGJ1k2SOeYysCky3RjgumdoW ";
       };
-      extraConfig = ''
-        Host git.1gnis.me
-        HostName ssh.1gnis.me
-        User git
-        ProxyCommand cloudflared access ssh --hostname %h
-        IdentityFile ~/.ssh/id_ed25519
-      '';
     };
     tmux = {
       enable = true;
@@ -117,7 +112,6 @@
     fd
     eza
     norgolith
-    cloudflared
   ];
 
   nixpkgs = {
